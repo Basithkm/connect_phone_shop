@@ -28,12 +28,13 @@ def filter_brand(request,id):
     return render(request,'store_template/category.html', context)
 
 
-def filter_phone(request,id):
+
+def products_page(request,id):
     product = Product.objects.filter(phone_name=id)
     context ={
         'mobile_phones':product
     }
-    return render(request,'store_template/category.html', context)
+    return render(request,'store_template/products.html', context)
 
 
 def view_all(request):
@@ -309,3 +310,6 @@ def cart(request, total=0, quantity=0, cart_items=None):
     }
 
     return render(request, 'store_template/cart.html', context)
+
+
+

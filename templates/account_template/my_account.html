@@ -10,7 +10,7 @@
 <div class="container">
     <div id="srchrlt" class="d-flex flex-wrap"></div>
   </div>
-  
+  {% include 'includes/alerts.html' %}
       <div class="container mt-5">
           <div class="row">
               <div class="col-md-3">
@@ -53,19 +53,22 @@
                               </p>
                               <hr>
                               <p>
-                                  <span>Place / Area :{{form.place_or_area}}</span>
+                        
+                                <span>Place / Area :{% if  form.place_or_area%}{{form.place_or_area}}</span>
+                                  {% endif %}
                               </p>
                               <hr>
                               <p>
-                                  <span>Block number :{{form.place}} </span>
+                                  <span>Block number :{% if  form.block_number%}{{form.block_number}} </span>{% endif %}
                               </p>
                               <hr>
                               <p>
-                                  <span>House / Building Number :{{form.place}}</span>
+                                  <span>House / Building Number :{% if  form.house_building_number%}{{form.house_building_number}}</span>{% endif %}
+                                </p>
                               </p>
                               <hr>
                               <p>
-                                  <span>Street/ Avenue Number : {{form.place}}</span>
+                                  <span>Street/ Avenue Number : {% if  form.street_avenue_number%}{{form.street_avenue_number}}</span>{% endif %}
                               </p>
                               <hr>
                           
@@ -73,34 +76,34 @@
                       <div class="tab-pane fade   myaccount px-4" id="tab2">
                           <h1>Edit Profile</h1>
                           <form action="" method="post">
-  
+                                {% csrf_token %}
                          
                               <div class="col-md-12 form-group">
                                   <label>Name</label>
-                                  <input class="form-control" type="text" name="name" value="" pattern="^[^-\s][a-zA-Z0-9_\s-]+$" onkeydown="return myf(event)"><span id="error" style="color:red;display:none">Please Enter Only Alphabets...</span>
+                                  <input class="form-control" type="text" name="name" value="{{form.first_name}}" pattern="^[^-\s][a-zA-Z0-9_\s-]+$" onkeydown="return myf(event)"><span id="error" style="color:red;display:none">Please Enter Only Alphabets...</span>
                  
                               </div>
                               <h1>Shipping Details</h1>
                               <div class="col-md-6 form-group">
                                   <label>Place / Area</label>
-                                  <input class="form-control" type="text" name="state" value="">
+                                  <input class="form-control" type="text" name="place_area" value="{% if  form.place_or_area%}{{form.place_or_area}}{% endif %}">
                               </div>
                               <div class="col-md-6 form-group">
                                   <label>Mobile number</label>
-                                  <input class="form-control" type="text" name="mobile" value="" id="mobile" value="">&nbsp;<span
+                                  <input class="form-control" type="text" name="mobile" value="{% if  form.phone_number%}{{form.phone_number}}{% endif %}" id="mobile" >&nbsp;<span
                                       id="errmsg" style="color:red;"></span>
                               </div>
                               <div class="col-md-6 form-group">
                                   <label>Block number</label>
-                                  <input class="form-control" type="text" name="address" value="">
+                                  <input class="form-control" type="text" name="block_number" value="{% if  form.block_number%}{{form.block_number}} {% endif %}">
                               </div>
                               <div class="col-md-6 form-group">
                                   <label>House / Building Number</label>
-                                  <input class="form-control" type="text" name="pincode" value="">
+                                  <input class="form-control" type="text" name="house" value="{% if  form.house_building_number%}{{form.house_building_number}}{% endif %}">
                               </div>
                               <div class="col-md-12 form-group">
                                   <label>Street/ Avenue Number</label>
-                                  <textarea class="form-control" type="text" name="district"></textarea>
+                                  <textarea class="form-control" type="text" name="street">{% if  form.street_avenue_number%}{{form.street_avenue_number}}{% endif %}</textarea>
                               </div>
                               <div class="col-md-12 form-group">
   
@@ -217,7 +220,17 @@
                       </div>
                   </div>
                   
-            
+                  <div class="footer-mob">
+                    <div class="footerlink">
+                    
+                           <a class="nav-link"  href="">Return Policy</a>
+                           <a class="nav-link" href="">Delivery Information</a>
+                           <a class="nav-link"  href="">Privacy Polic</a>
+                           <a class="nav-link"  href="">Terms&amp;Condition</a>
+                             <a class="nav-link"  href="{% url 'signout'%}">Log Out</a>
+                        
+                    </div>
+                </div>
               </div>
           </div>
          

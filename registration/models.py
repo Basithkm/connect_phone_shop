@@ -45,6 +45,15 @@ class Account(AbstractBaseUser,PermissionsMixin):
     email           = models.EmailField(max_length=50, unique=True)
     phone_number    = models.CharField(max_length=10, unique=True)
 
+
+
+    place_or_area = models.CharField(max_length=200,blank=True,null=True)
+    block_number = models.CharField(max_length=200,blank=True,null=True)
+    house_building_number = models.CharField(max_length=200,blank=True,null=True)
+    street_avenue_number = models.TextField(blank=True,null=True)
+    
+
+
     # required
     date_joined     = models.DateTimeField(auto_now_add=True)
     last_login      = models.DateTimeField(auto_now_add=True)

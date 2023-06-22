@@ -41,10 +41,10 @@ class CartitemsAdmin(admin.ModelAdmin):
    list_display = ('product','cart','quantity','is_active',)   
 
 
-   admin.site.register(Product,ProductAdmin)   
-# admin.site.register(Variation,VariationAdmin) 
-# admin.site.register(Cart,CartAdmin)   
-# admin.site.register(Cartitems,CartitemsAdmin)   
+admin.site.register(Product,ProductAdmin)   
+admin.site.register(Variation,VariationAdmin) 
+admin.site.register(Cart,CartAdmin)   
+admin.site.register(Cartitems,CartitemsAdmin)   
 # admin.site.register(Filter_Price)   
 # admin.site.register(wishlist)   
-# admin.site.register(ReviewRating)   
+admin.site.register(ReviewRating)   

@@ -1,0 +1,358 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{% endblock title %}about
+
+{%block main-content %}
+
+
+<div class="container">
+    <div id="srchrlt" class="d-flex flex-wrap"></div>
+  </div>
+  
+  
+      <section >
+          <button id="sidebar-toggle-cat">
+              <i class="fas fa-sort-amount-down-alt"></i>Filtration</button>
+    <div id="sidebar-cat">
+      <ul>
+        <div class="filter">
+                   <form action="" method="post">
+                
+                      <div class="product-cat-head d-flex ">
+                          <h6>Categories</h6>
+                          <span onclick="toggleDiv()"><i class="fas fa-chevron-down"></i></span>
+                      </div>
+                      <div id="myDiv" >
+                          <div class="product-list-category">
+
+                                <ul style="padding-left:0px;">
+                                  <a href=""><li>ca1</li></a>
+                                  <a href=""><li>ca1</li></a>
+                                  <a href=""><li>ca1</li></a>
+                                  <a href=""><li>ca1</li></a>
+                                </ul>
+  
+                          </div>
+                      </div>
+         
+                  
+                      <div class="product-cat-head d-flex ">
+                          <h6>Price</h6>
+                          <span onclick="toggleDivtwo()"><i class="fas fa-chevron-down"></i></span>
+                      </div>
+                      <div id="myDivtwo" >
+                          <div class="product-list-category">
+  
+                              <label for="checkboxId">Min Price : </label>
+                              <input  style="width:100%;" type="number"  name="minprice" >
+                              <br></br>
+                              <label for="checkboxId">Max Price : </label>
+                              <input  style="width:100%;" type="numer"   name="maxprice">
+                          </div>
+                      </div>
+  
+                      <div class="product-cat-head d-flex ">
+                          <h6>Brands</h6>
+                          <span onclick="toggleDivthree()"><i class="fas fa-chevron-down"></i></span>
+                      </div>
+                      <div id="myDivthree" >
+                 
+                          <div class="product-list-category">
+                              <label for="checkboxId">
+                                  <input type="checkbox" id="checkboxId" name="brand[]" value="">
+                                nokia
+                              </label>
+  
+                          </div>
+                          <div class="product-list-category">
+                              <label for="checkboxId">
+                                  <input type="checkbox" id="checkboxId" name="brand[]" value="">
+                                Samsung
+                              </label>
+  
+                          </div>
+                     
+                      </div>
+                      <div class="product-cat-head d-flex ">
+                          <h6>Color</h6>
+                          <span onclick="toggleDivfour()"><i class="fas fa-chevron-down"></i></span>
+                      </div>
+                      <div id="myDivfour" >
+                     
+                          <div class="product-list-category">
+                              <label for="checkboxId">
+                                  <input type="checkbox" id="checkboxId" name="color[]"  value="">
+                                  Red
+                              </label>
+                          </div>
+                          <div class="product-list-category">
+                              <label for="checkboxId">
+                                  <input type="checkbox" id="checkboxId" name="color[]"  value="">
+                                  Blue
+                              </label>
+                          </div>
+                          <div class="product-list-category">
+                              <label for="checkboxId">
+                                  <input type="checkbox" id="checkboxId" name="color[]"  value="">
+                                  Red
+                              </label>
+                          </div>
+                      
+                      </div>
+                    
+                          <div class="product-cat-head">
+                             <!--<input type="text"  placeholder="Enter your text...">-->
+                       <button type="submit">Submit</button>
+                       <!-- <input type="submit" value="Submit"> -->
+                          </div>
+                      </form>
+  
+  
+                  </div>
+      </ul>
+    </div>
+    
+    
+    
+          <div class="row filter-main">
+              <div class="col-md-3 filter-desktop">
+                  <div class="filter">
+                   <form action="" method="post">
+                    
+                      <div class="product-cat-head d-flex ">
+                          <h6>Categories</h6>
+                          <span onclick="toggleDivfive()"><i class="fas fa-chevron-down"></i></span>
+                      </div>
+                      <div id="myDivfive" >
+                          <div class="product-list-category">
+                              <ul style="padding-left:0px;">
+                            
+                                  <a href=""><li>ca1</li></a>
+                                  <a href=""><li>ca1</li></a>
+                                  <a href=""><li>ca1</li></a>
+                                  <a href=""><li>ca1</li></a>
+                                  <a href=""><li>ca1</li></a>
+                                
+                               
+                              </ul>
+  
+                          </div>
+                      </div>
+         
+                  
+                      <div class="product-cat-head d-flex ">
+                          <h6>Price</h6>
+                          <span onclick="toggleDivsix()"><i class="fas fa-chevron-down"></i></span>
+                      </div>
+                      <div id="myDivsix" >
+                          <div class="product-list-category">
+  
+                              <label for="checkboxId">Min Price : </label>
+                              <input  type="number"  name="minprice" >
+                              <br></br>
+                              <label for="checkboxId">Max Price : </label>
+                              <input type="numer"   name="maxprice">
+                          </div>
+                      </div>
+  
+  
+  
+  
+                      <div class="product-cat-head d-flex ">
+                          <h6>Brands</h6>
+                          <span onclick="toggleDivseven()"><i class="fas fa-chevron-down"></i></span>
+                      </div>
+                      <div id="myDivseven" >
+                    
+                          <div class="product-list-category">
+                              <label for="checkboxId">
+                                  <input type="checkbox" id="checkboxId" name="brand[]" value="n">
+                                  Nokia
+                              </label>
+  
+                          </div>
+                          
+                          <div class="product-list-category">
+                              <label for="checkboxId">
+                                  <input type="checkbox" id="checkboxId" name="brand[]" value="n">
+                                  Samsung
+                              </label>
+  
+                          </div>
+                          
+                          <div class="product-list-category">
+                              <label for="checkboxId">
+                                  <input type="checkbox" id="checkboxId" name="brand[]" value="n">
+                                  oppo
+                              </label>
+  
+                          </div>
+                          
+                          <div class="product-list-category">
+                              <label for="checkboxId">
+                                  <input type="checkbox" id="checkboxId" name="brand[]" value="n">
+                                  Iphone
+                              </label>
+  
+                          </div>
+                      
+                      </div>
+                      
+                      
+                      
+                      
+                    
+                          <div class="product-cat-head">
+                             <!--<input type="text"  placeholder="Enter your text...">-->
+                       <button type="submit">Submit</button>
+                       <!-- <input type="submit" value="Submit"> -->
+                          </div>
+                      </form>
+  
+  
+                  </div>
+  
+              </div>
+              <div class="col-md-9  ">
+  
+                  <div class="row">
+                
+                    {% for product in mobile_phones %}
+
+                      <div class="col-md-3 col-sm-6 col-6">
+                          <div class='newdesign'>
+                          <a href="{{ product.get_url }}">
+                        <img style="width:100%;" src="{{product.images.url}}">
+                                  <p style="font-size:14px;margin-bottom:0.5rem;">{{product.product_name}}
+                                  </p>
+                                  <p style="font-weight:600;font-size:18px;color: #f5831a;margin-bottom: 4px;" class="  ">
+                                    {{product.product_name}}</p>
+                                  <div class="font-body"><span
+                                          style="font-weight:600;font-size:14px;color: #f5831a;margin-bottom: 4px;text-decoration: line-through;"
+                                          class=" ">{{product.product_name}}</span> <span class=""
+                                          style="background-color: #f5831a;font-size: 12px;color: white;padding: 3px;">25%</span>
+                                  </div>
+                              </a>
+                            
+                  
+                          </div>
+                      </div>
+                     
+                      {% endfor %}
+                      
+                      
+                     
+                      
+                  </div>
+  
+      
+  
+  
+  
+              </div>
+          </div>
+      </section>
+      <!-- <div class="paginationclass">
+                  filter results
+      </div> -->
+  
+      <!-- for filtration -->
+      <script>
+          function toggleDiv() {
+              var div = document.getElementById("myDiv");
+              if (div.classList.contains("hidden")) {
+                  div.classList.remove("hidden");
+              } else {
+                  div.classList.add("hidden");
+              }
+          }
+          function toggleDivtwo() {
+              var div = document.getElementById("myDivtwo");
+              if (div.classList.contains("hidden")) {
+                  div.classList.remove("hidden");
+              } else {
+                  div.classList.add("hidden");
+              }
+          }
+          function toggleDivthree() {
+              var div = document.getElementById("myDivthree");
+              if (div.classList.contains("hidden")) {
+                  div.classList.remove("hidden");
+              } else {
+                  div.classList.add("hidden");
+              }
+          }
+          function toggleDivfour() {
+              var div = document.getElementById("myDivfour");
+              if (div.classList.contains("hidden")) {
+                  div.classList.remove("hidden");
+              } else {
+                  div.classList.add("hidden");
+              }
+          }
+          
+          
+          
+          
+            function toggleDivfive() {
+              var div = document.getElementById("myDivfive");
+              if (div.classList.contains("hidden")) {
+                  div.classList.remove("hidden");
+              } else {
+                  div.classList.add("hidden");
+              }
+          }
+          
+           function toggleDivsix() {
+              var div = document.getElementById("myDivsix");
+              if (div.classList.contains("hidden")) {
+                  div.classList.remove("hidden");
+              } else {
+                  div.classList.add("hidden");
+              }
+          }
+          
+           function toggleDivseven() {
+              var div = document.getElementById("myDivseven");
+              if (div.classList.contains("hidden")) {
+                  div.classList.remove("hidden");
+              } else {
+                  div.classList.add("hidden");
+              }
+          }
+          
+           function toggleDiveight() {
+              var div = document.getElementById("myDiveight");
+              if (div.classList.contains("hidden")) {
+                  div.classList.remove("hidden");
+              } else {
+                  div.classList.add("hidden");
+              }
+          }
+      </script>
+      <script>
+          document.getElementById('sidebar-toggle-cat').addEventListener('click', function() {
+    var body = document.body;
+    body.classList.toggle('sidebar-open');
+  });
+      </script>
+      <!--add to cart message -->
+  <script>
+      function showPopup() {
+        // Display the popup box
+        document.getElementById("popup-box").style.display = "block";
+  
+        // Automatically close the popup after 3 seconds
+        setTimeout(function() {
+          hidePopup();
+        }, 2000);
+      }
+  
+      function hidePopup() {
+        // Hide the popup box
+        document.getElementById("popup-box").style.display = "none";
+      }
+  </script>
+
+
+{%endblock main-content%} 

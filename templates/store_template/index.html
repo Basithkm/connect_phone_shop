@@ -104,7 +104,7 @@
     </div>
   </section>
 
-  <section>
+  {% comment %} <section>
     <div class="container-fluid">
       <div class="row home-sub-head" style="padding-top:0px;">
         <div class="col-6 text-start home-sub">
@@ -148,10 +148,57 @@
   
       </div>
     </div>
-  </section>
+  </section> {% endcomment %}
 
 <!-- computer collections -->
+
+
+<section>
+  <div class="container-fluid">
+    <div class="row home-sub-head" style="padding-top:0px;">
+      <div class="col-6 text-start home-sub">
+        <h1>
+          Accessories
+        </h1>
+      </div>
+      <div class="col-6 text-end">
+        <div class="view-all">
+        <a  href="{% url 'view_all' %}"> View All</a>
+        </div>
+      </div>
+    </div>
+        <div class='bannerimage'>
+      
+          <img src="{% static 'images/itcityimages/homebackground/accessories.jpg' %}" alt="">
+
+    </div>
+    <div class='bannerimagemobile'>
+      <img src="{% static 'images/itcityimages/homebackground/accessoriesmobile.jpg' %}" alt="">
+      <img src="" alt=""></img>
+    </div>
+
+    <div class='content'>
  
+      {% for products in products %} 
+      <div class='newdesign'>
+        <a href="{{ products.get_url }}"> 
+          <img src="{{products.images.url}}" alt="">
+
+        <p style="font-size:14px;margin-bottom:0.5rem;">{{products.phone_name}}</p>
+        <p style="font-weight:600;font-size:18px;color: #f5831a;margin-bottom: 4px;" class="">{{products.phone_name}}</p>
+        <p style="font-weight:600;font-size:18px;color: #f5831a;margin-bottom: 4px;" class="">{{products.brand}}</p>
+        <div class="font-body"><span
+            style="font-weight:600;font-size:14px;color: #000;margin-bottom: 4px;text-decoration: line-through;"
+            class=" ">{{products.price}}</span> <span class=""
+            style="background-color: #f5831a;font-size: 12px;color: white;padding: 3px;">{{products.price}}</span></div>
+</a>
+          
+      </div>
+     {% endfor %}
+
+    </div>
+  </div>
+</section>
 
 
       </div>

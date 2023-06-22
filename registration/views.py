@@ -75,25 +75,52 @@ def signout(request):
 def get_my_account(request):
     if request.user.is_authenticated:
         user = User.objects.get(email=request.user.email)
-        user =request.user
+        # user =request.user
+        
         # sale_products =SellProperty.objects.filter(user=user)
         # rent_products = RentProperty.objects.filter(user=user) 
         form =User.objects.get(id=user.id)
+        
+
+
         context ={
             'form':form ,
             # 'rent_products':rent_products,
             # 'sale_products':sale_products
         }
-        # if request.method == 'POST':
-        #     phone_number =request.POST['phone_number']
-        #     user.phone_number = phone_number
-        #     if User.objects.filter(phone_number = phone_number).exists():
-        #         messages.info(request, 'phone already number taken')
-        #         return redirect('get_my_account')
-        #     user.save()
-        #     messages.success(request, 'phone number added successfully')
-        #     return redirect('get_my_account')
-        # # person = get_object_or_404(User,id=pk)
+        if request.method == 'POST':
+            name =request.POST['name']
+            place_area =request.POST['place_area']
+            phone_number =request.POST['mobile']
+            block_number =request.POST['block_number']
+            house =request.POST['house']
+            street =request.POST['street']
+
+            
+            print(name)
+            print(place_area)
+            print(phone_number)
+            print(block_number)
+            print(house)
+            print(street)
+            # messages.success(request, 'phone number added successfully')
+            user.first_name =name
+            user.place_or_area =place_area
+            user.block_number=block_number
+            user.house_building_number=house
+            user.street_avenue_number=street
+            user.save()
+            messages.success(request, 'changed succesfully')
+
+            
+            user.phone_number = phone_number
+            if User.objects.filter(phone_number = phone_number).exists():
+                messages.info(request, 'phone already number taken')
+                return redirect('get_my_account')
+            user.save()
+            
+            return redirect('get_my_account')
+        # person = get_object_or_404(User,id=pk)
         return render(request,'account_template/my_account.html',context)
     else:
         return redirect('signin')

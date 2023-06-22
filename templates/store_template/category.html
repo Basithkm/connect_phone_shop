@@ -10,15 +10,15 @@
 
 <section>
     <div class="mb-5 footerclass container">
-        <h3 class="text-center">models</h3>
+        <h3 class="text-center">phones</h3>
             <div class="category-main  ">
                 <div class="categoriesfooter flex-wrap justify-content-center;">
                     {% for product in filter_brand %}
-                    <a href="{% url 'filter_phone' product.id %}">  
+                    <a href="{% url 'products_page' product.id %}">  
                         <div class="dd ">
                             <img src="{{product.sub_category_image.url}}" alt="itcity">
-                            <p class="fw-bold">{{product.sub_categoryname}}</p>
-                        </div>
+                            <p class="fw-bold">{{product.sub_categoryname}}</p></div>
+                       
                     </a>
                     {% endfor %}
             
@@ -31,11 +31,13 @@
 
 
 
+
+
  {% if mobile_phones %}
 
  <section>
      <div class="mb-5 footerclass container">
-         <h3 class="text-center">Phones</h3>
+         <h3 class="text-center">products</h3>
              <div class="category-main  ">
                  <div class="categoriesfooter flex-wrap justify-content-center;">
 
@@ -43,7 +45,7 @@
                      <a href="{{ product.get_url }}">  
                          <div class="dd ">
                              <img src="{{product.images.url}}" alt="itcity">
-                             <p class="fw-bold">{{product.product_name}}</p>
+                             <p class="fw-bold">{{product.product_name}}</p></div>
                      </a>
                      {% endfor %}
                  
@@ -60,7 +62,7 @@
   {% if veiw_all_category %}
   <section>
       <div class="mb-5 footerclass container">
-          <h3 class="text-center">Phones</h3>
+          <h3 class="text-center">models</h3>
               <div class="category-main  ">
                   <div class="categoriesfooter flex-wrap justify-content-center;">
  
@@ -68,7 +70,7 @@
                       <a href="{% url 'filter_brand' product.id %}">  
                           <div class="dd ">
                               <img src="{{product.category_image.url}}" alt="itcity">
-                              <p class="fw-bold">{{product.category_name}}</p>
+                              <p class="fw-bold">{{product.category_name}}</p></div>
                       </a>
                       {% endfor %}
                   

@@ -2,6 +2,8 @@ from django.db import models
 from django.urls import reverse
 from registration.models import Account
 from django.db.models import Avg,Count
+from django.core.files.images import ImageFile
+from PIL import Image
 # Create your models here.
 
 
@@ -24,6 +26,19 @@ class Category(models.Model):
 
     def __str__(self):
         return self.category_name
+    
+
+    def save(self):
+        if self.category_image:          
+            super(Category, self).save()
+            category_image = Image.open(self.category_image)
+            (width , height) = category_image.size     
+            size = (720,480)
+            image = category_image.resize(size, Image.ANTIALIAS)
+            image.save(self.category_image.path)
+        # else:
+        #     if self.rent_property_category:  
+        #         super(SellProperty, self).save()
 
 
 
