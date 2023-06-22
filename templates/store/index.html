@@ -1,0 +1,118 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Product List</title>
+</head>
+<body>
+
+  <div class="container">
+    {% include 'includes/alerts.html' %}
+    <br>
+    {% comment %} <form method="get" action="{% url 'search' %}"> {% endcomment %}
+      <form>
+      <input class="form-control" type="text" id="search-input" name="query" placeholder="Search you phone ">
+      <button type="submit" class="btn filterbtn">Search</button>
+    </form>
+    cart
+    {% comment %} <a href="{% url 'cart:cart_detail' %}" class="btn btn-success">Cart</a>  {% endcomment %}
+    <h1>Select Your phone</h1> {% if request.user.is_authenticated %} {{request.user}}
+
+    <button type="button" class="bg-dark text-white border" data-toggle="modal" data-target="#exampleModal" style="margin-left: 18px;">
+      Logout
+   </button>
+     
+     <!-- Modal -->
+     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+       <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-header">
+          
+             <h5 style="color:#000;" class="modal-title" id="exampleModalLabel"><i style="color:#000;" class="fas fa-sign-out-alt"></i> Logout</h5>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+             </button>
+           </div>
+           <div class="modal-body" style="color:#000;">
+            Are You Sure Want to Logout
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+             <a href="{% url 'signout' %}"><button type="button" class="btn btn-danger">Logout</button></a>
+           </div>
+         </div>
+       </div>
+     </div>
+    {% endif %}
+    <div class="row">
+      {% for products in brand_products %} 
+        
+        <div class="col-md-3">
+          <div class="card">
+              <a style="text-decoration: none;" href="{% url 'filter_brand' products.id %}"><img class="card-img-top" src="{{products.cover_image_brand.url}}" alt="Product 1"></a>
+            <div class="card-body">
+              <a style="text-decoration: none;" href="{% url 'filter_brand' products.id %}"><h5 class="card-title">{{products.brand_name}}</h5></a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <br><br><br><br>
+products
+
+
+
+    <div class="row">
+
+    
+      {% for products in full_products %} 
+      <div class="col-md-3">
+        <div class="card">
+          <a style="text-decoration: none;" href="{% url 'product_inner_page' products.id %}"><img class="card-img-top" src="{{products.cover_image.url}}" alt="Product 1"></a>
+          <div class="card-body">
+            <h5 class="card-title">{{products.phone_name}}</h5>
+            <a style="text-decoration: none;" href="{% url 'product_inner_page' products.id %}"><p class="card-text">
+              product name: {{products.product_name}}<br>
+                phone name: {{products.phone_name}}<br>
+                Brand: {{products.brand_name}}<br>
+                Price: {{products.price}}<br>
+                Offer Price:{{products.offer_price}}<br>
+               
+            </p></a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>    
+  </div>
+
+
+</body>
+
+{% comment %} 
+<script>
+  $(function() {
+    // Define URL to fetch autocomplete data
+    var autocompleteUrl = "{% url 'spaceautocomplete' %}";
+  
+    // Set up autocomplete for search input
+    $("#search-input").autocomplete({
+    source: autocompleteUrl,
+    minLength: 1, // Minimum characters to trigger autocomplete
+    });
+  });
+  </script> {% endcomment %}
+
+
+</html> 
+

@@ -1,0 +1,325 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{% endblock title %}about
+
+
+{%block main-content %}
+{% block css %}
+<style>
+    #id_quantity {
+        padding: 10px;
+    }
+
+    .forms {
+        border: 0.3px solid gray;
+        padding: 10px;
+    }
+    .btns
+    {
+        padding:10px;
+        border-radius: 5px;
+        color: white;
+    }
+</style>
+{% endblock %}
+
+
+
+<div class="container">
+    
+    {% if single_product %}
+    <div id="srchrlt" class="d-flex flex-wrap"></div>
+    </div>
+    
+        <section class="view-cart">
+            <div class="container my-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="product-detail">
+                        
+    <div class="exzoom" id="exzoom">
+      <!-- Images -->
+      <div class="exzoom_img_box">
+        <ul class='exzoom_img_ul'>
+           
+          <li>
+              <img  src="{{single_product.images.url}}"/>
+         </li>
+         {% if single_product.image1 %}
+         <li>
+          <img  src="{{single_product.image1.url}}"/>
+     </li>
+     {% endif %}
+
+     {% if single_product.image2 %}
+     <li>
+      <img  src="{{single_product.image2.url}}"/>
+ </li>
+ {% endif %}
+ {% if single_product.image3 %}
+ <li>
+  <img  src="{{single_product.image3.url}}"/>
+</li>
+{% endif %}
+
+
+         
+         
+        </ul>
+      </div>
+    
+      <div class="exzoom_nav"></div>
+    
+      <p class="exzoom_btn">
+          <a href="javascript:void(0);" class="exzoom_prev_btn"> </a>
+          <a href="javascript:void(0);" class="exzoom_next_btn"> </a>
+      </p>
+    </div>
+    </div>
+                </div>
+                <div class="col-md-6 py-5">
+    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="detail-sub-head d-flex">
+                                <!-- <h6>APPLE</h6> -->
+                                <span class="instock">instock</span>
+                            </div>
+                            <div class="details-head">
+                                <h1>{{single_product.phone_name}}</h1>
+                            </div>
+                            <div class="details-sub-price">
+                                <p>{{ single_product.price }}</p>
+                                <h3> {{ single_product.price }}</h3>
+                                <span class="discount-percent">{{ single_product.price }}</span>
+                            </div>
+                            
+    </br>
+                            <div class="detailcart">
+                                <form action="{% url 'addcart' single_product.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit" class="primary-btn">Add to Cart</button>
+                                </form>
+                            </div>
+                   
+
+                           
+                            
+                            
+                            <hr>
+                            <div class="details-para">
+                                <h6>Product Details</h6>
+                                <ul>
+                                    <li>description </li>
+
+                                    {{single_product.description}}
+                                    
+                                </ul>
+                              
+                            </div>
+    
+    
+    
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+            {% endif %}
+            <div class="container">
+                <hr>
+            </div>
+    
+            <div class="container">
+                <ul class="nav nav-tabs" id="myTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                            type="button" role="tab" aria-controls="home" aria-selected="true">Description</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                            type="button" role="tab" aria-controls="profile" aria-selected="false">Reviews</button>
+                    </li>
+    
+                </ul>
+    
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="details-para">
+                            <h6>Product Details</h6>
+                            <ul>
+                                <li>Description</li>
+                                
+                                
+                            </ul>
+                        </div>
+    
+                    </div>
+                    
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="container px-5">
+                        <h2 class="customer-review">Customer Reviews</h2>
+                    
+                      <form class="form-horizontal" action="" method="post">
+            
+                        <input type="hidden" name="product_id" value="">
+                        <div class="form-area">
+                            <h2 class="write-review">Write Your Own Review</h2>
+                          <div class="form-element">
+                            <label>Nickname <em>*</em></label><br>
+                            <input type="text" name="author" required="" autofocus="">
+                          </div>
+                          
+                          <div class="form-element">
+                            <label>Review <em>*</em></label><br>
+                            <textarea required="" name="text"></textarea>
+                          </div>
+    
+                          <div class="buttons-set">
+                            <button class="button submit review-button" title="Submit Review" type="submit" ><span><i class="fa fa-thumbs-up"></i> &nbsp;Review</span></button>
+                          </div>
+    
+                         </div>
+                       </form>
+    
+                   
+                        <div class="customer py-3">
+                        <p>No reviews</p>
+                        </div>
+                       
+                     
+                
+                      <a href="" class="btn btn-dark">Login To Customer Reviews</a>
+                     
+             
+                       <div class="customer py-3" style="text-transform: capitalize;">
+                           <h6>namw</h6>
+      
+                           <p>test<small>(Posted on date)</small></p>
+                       </div>
+                      
+                     
+    
+    
+            </div>
+                            </div>
+            
+                        </div>
+                    
+                    </div>
+                    </div>
+           
+                
+          
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="related-product">
+                         <h1>Related Products</h1>
+                    </div>
+                
+                </div>
+            </div>
+            <div class="row py-5">
+
+                {% for products in related_products %}
+
+
+                <div class='newdesign'>
+                    <a href="{{ products.get_url }}"> 
+                      <img src="{{products.images.url}}" alt="">
+          
+                    <p style="font-size:14px;margin-bottom:0.5rem;">{{products.phone_name}}</p>
+                    <p style="font-weight:600;font-size:18px;color: #f5831a;margin-bottom: 4px;" class="">{{products.phone_name}}</p>
+                    <p style="font-weight:600;font-size:18px;color: #f5831a;margin-bottom: 4px;" class="">{{products.brand}}</p>
+                    <div class="font-body"><span
+                        style="font-weight:600;font-size:14px;color: #000;margin-bottom: 4px;text-decoration: line-through;"
+                        class=" ">{{products.price}}</span> <span class=""
+                        style="background-color: #f5831a;font-size: 12px;color: white;padding: 3px;">{{products.price}}</span></div>
+          </a>
+                      
+                  </div>
+    {% endfor %}
+                   
+            </div> 
+            
+        </section>
+        <script>
+            
+            $(function(){
+    
+      $("#exzoom").exzoom({
+    
+        // thumbnail nav options
+        "navWidth": 60,
+        "navHeight": 60,
+        "navItemNum": 5,
+        "navItemMargin": 7,
+        "navBorder": 1,
+    
+        // autoplay
+        "autoPlay": false,
+    
+        // autoplay interval in milliseconds
+        "autoPlayTimeout": 2000
+        
+      });
+    
+    });
+            
+        </script>
+        
+        
+        
+        
+        
+      <script>
+        function showPopup() {
+          // Display the popup box
+          document.getElementById("popup-box").style.display = "block";
+    
+          // Automatically close the popup after 3 seconds
+          setTimeout(function() {
+            hidePopup();
+          }, 2000);
+        }
+    
+        function hidePopup() {
+          // Hide the popup box
+          document.getElementById("popup-box").style.display = "none";
+        }
+    </script> 
+    
+    
+    
+    
+    
+    <script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+    
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var img = document.getElementById("myImg");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    img.onclick = function(){
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      captionText.innerHTML = this.alt;
+    }
+    
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() { 
+      modal.style.display = "none";
+    }
+    </script>
+    
+    
+    
+    
+    
+
+  
+  {%endblock main-content%} 

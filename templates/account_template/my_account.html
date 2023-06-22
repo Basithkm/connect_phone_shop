@@ -1,0 +1,226 @@
+
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{% endblock title %}
+
+{%block main-content %}
+
+
+<div class="container">
+    <div id="srchrlt" class="d-flex flex-wrap"></div>
+  </div>
+  
+      <div class="container mt-5">
+          <div class="row">
+              <div class="col-md-3">
+                  <ul class="nav flex-column nav-tabs" style="background-color:#f5831a;">
+                      
+                      
+                      
+                      <li class="nav-item nav-link-tab">
+                          <a class="nav-link active" data-bs-toggle="tab" href="#tab1">Profile</a>
+                      </li>
+                      <li class="nav-item nav-link-tab">
+                          <a class="nav-link" data-bs-toggle="tab" href="#tab2">Edit Profile</a>
+                      </li>
+                      <li class="nav-item nav-link-tab">
+                          <a class="nav-link" data-bs-toggle="tab" href="#tab3">My Orders</a>
+                      </li>
+   
+                  </ul>
+              </div>
+              <div class="col-md-9">
+                  <div class="tab-content">
+                      <div class="tab-pane fade myaccount show active px-4" id="tab1">
+                         
+                              <h1 style="padding-left:0">My Profile</h1>
+                              <p>
+                                  <span>Name :{{form.first_name}} </span>
+                              </p>
+                              <hr>
+  
+                              <p>
+                                {% if form.phone_number%}
+                                  <span>Mobile Number :{{form.phone_number}}</span>
+               
+                                {% endif %}
+
+                              </p>
+                              <hr>
+                              <p>
+                                  <span>Email : {{form.email}}</span> 
+                              </p>
+                              <hr>
+                              <p>
+                                  <span>Place / Area :{{form.place_or_area}}</span>
+                              </p>
+                              <hr>
+                              <p>
+                                  <span>Block number :{{form.place}} </span>
+                              </p>
+                              <hr>
+                              <p>
+                                  <span>House / Building Number :{{form.place}}</span>
+                              </p>
+                              <hr>
+                              <p>
+                                  <span>Street/ Avenue Number : {{form.place}}</span>
+                              </p>
+                              <hr>
+                          
+                      </div>
+                      <div class="tab-pane fade   myaccount px-4" id="tab2">
+                          <h1>Edit Profile</h1>
+                          <form action="" method="post">
+  
+                         
+                              <div class="col-md-12 form-group">
+                                  <label>Name</label>
+                                  <input class="form-control" type="text" name="name" value="" pattern="^[^-\s][a-zA-Z0-9_\s-]+$" onkeydown="return myf(event)"><span id="error" style="color:red;display:none">Please Enter Only Alphabets...</span>
+                 
+                              </div>
+                              <h1>Shipping Details</h1>
+                              <div class="col-md-6 form-group">
+                                  <label>Place / Area</label>
+                                  <input class="form-control" type="text" name="state" value="">
+                              </div>
+                              <div class="col-md-6 form-group">
+                                  <label>Mobile number</label>
+                                  <input class="form-control" type="text" name="mobile" value="" id="mobile" value="">&nbsp;<span
+                                      id="errmsg" style="color:red;"></span>
+                              </div>
+                              <div class="col-md-6 form-group">
+                                  <label>Block number</label>
+                                  <input class="form-control" type="text" name="address" value="">
+                              </div>
+                              <div class="col-md-6 form-group">
+                                  <label>House / Building Number</label>
+                                  <input class="form-control" type="text" name="pincode" value="">
+                              </div>
+                              <div class="col-md-12 form-group">
+                                  <label>Street/ Avenue Number</label>
+                                  <textarea class="form-control" type="text" name="district"></textarea>
+                              </div>
+                              <div class="col-md-12 form-group">
+  
+                                  <button type="submit" id="submit" class="btn btn-dark mt-2 disabled"
+                                      style="pointer-events: all; cursor: pointer;">Submit</button>
+                              </div>
+                          </form>
+                      </div>
+                      <div class="tab-pane fade  myaccount    px-4 " id="tab3">                      
+                         
+                              <h1 style="padding-left:0">My Order</h1>
+                            
+  
+  
+  <p>You dont have any history.</p>
+  
+  
+  
+  
+  
+  <div class="checkout-basket">
+  <div class="head">
+  <div class="row">
+  <div class="col-md-6">
+  <p style="margin-top:0">Date: </p>
+  
+  </div>
+  <div class="col-md-6"><div class="price_total_payment"><span>Total Price: </span> KWD</div></div>
+  
+  
+  
+  
+  
+  
+  
+      <span>
+          <p style="color: #31a570;font-weight: 1000;"></p>
+      </span>
+  
+  
+  
+  
+                                                
+  </div>  
+                                          
+  </div>
+  <div class="content" style="display: block;">
+  
+  
+  
+  
+  
+  
+                                          <div class="basket-product">
+                                              <div class="row">
+                                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                      <div class="bask-prod-images">
+                                                      
+                                                     <img src="">
+                                                
+  
+                                                      </div>
+  
+                                                  </div>
+                                                 
+                                                  <div class="col-lg-7 col-md-7 col-sm-7 col-xs-6">
+                                                      <div class="bask-prod-name">
+                                                          <p></p>
+                                                      </div>
+                                                  </div>
+                                      
+                                                  <div class="col-lg-1 col-md-1 col-sm-1 col-xs-4">
+                                                      <div class="bask-prod-quantity">
+                                                          <p>Qty:</p>
+                                                      </div>
+                                                  </div>
+                                      
+                                                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                                                      <div class="bask-prod-price">
+                                                          <p>KWD:</p>
+                                                      </div>
+                                                  </div>
+                                                
+                                                 
+                                              </div>
+                                          </div>
+                                         
+                                          
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  </div>
+  
+  
+                      
+                         
+                      </div>
+                      <div class="tab-pane fade myaccount  px-5 " id="tab4">                      
+                              
+                             
+                              <p style="text-align:center;">Are you want to logout.</p>
+                              
+                               <div class="empty-cart">
+                                   <button>LOGOUT</button>
+                               </div>
+                         
+                      </div>
+                  </div>
+                  
+            
+              </div>
+          </div>
+         
+          </div>
+
+{%endblock main-content%} 

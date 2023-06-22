@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT City online store</title>
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css" media="all" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css" media="all" />
+  <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}" type="text/css" media="all" />
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   <link rel="icon" href="{% static 'images/itcityimages/favicon.png' %}" type="image/png">
+  
+
+</head>
+
+<body>
+  <div class="container-fluid top  ps-0 pe-0 " >
+    <div class="row">
+        
+        <div class="col-md-2 col-sm-12 col-12 logo">
+        <div> 
+<button class="hamburger-btn" onclick="toggleSidebar()">&#9776;</button>
+ </div>  
+
+         <div> 
+        <a  href="{% url 'home' %}">
+            
+             <img src="{% static 'images/itcityimages/logo-it.png' %}" alt="">
+        </a>
+        </div> 
+          <div class="top-icons">
+              
+            <div class="top-cart-icons">
+            <a  href="{% url 'cart' %}">
+                <img src="{% static 'images/itcity/shopping-cart.png' %}" alt="">
+            
+              <div id="mcart" class="cart-items-value">1</div>
+              </a>
+            </div>
+            <div class="top-user-icons">
+            
+              <div class=" hover-box" >
+                <a  href="{% url 'home' %}">
+                <img src="{% static 'images/itcity/user.png' %}" alt="">
+                    
+                </a>
+
+                </div>
+          
+         
+            </div>
+        </div>
+        </div>
+        <div class="col-md-8 header">
+
+            <div class='search'>
+                {% comment %} <form method="get" action="{% url 'search' %}"> {% endcomment %}
+                    <form method="get ">
+                <div class="searchBar">
+                
+                    <input id="search-input" name="query" type="text" placeholder="Search Products,Brands and More" />
+                    <div className='d-flex'>
+
+                        <button id="searchQuerySubmit" type="submit" name="search-input">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+
+        <div class="col-md-2 d-flex header-icons ">
+              
+            <div class="cart-icons">
+            <a class="cart-btn" href="{% url 'cart' %}">
+              <i class="fas fa-shopping-cart"></i>
+              <div id="mcartweb" class="cart-items-value"></div>
+              </a>
+            </div>
+            <div class="user-icons">
+         
+              <div class=" hover-box" >
+               <a href="{% url 'get_my_account' %}"><i class="fas fa-user"></i></a>
+                </div>
+            
+          
+            </div>
+        </div>
+    </div>
+
+    <nav class="main-navbar navbar navbar-expand-lg navbar-light p-0">
+        <div class="container">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="">Accessories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Computers</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="">Mobiles</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="">Tablets</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="">Home Appliances</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="">Watches & Perfumes</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="">Travel Bags</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="">Personal Care</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="">Cameras & Drones</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="">Game Zone</a>
+                    </li>
+            </div> 
+        </div>
+    </nav>
+  
+<!--Mobileresponsive-->
+
+
+
+
+<div class="sidebar" id="sidebar">
+    <span  class="popup-close" onclick="myFun()">&times;</span>
+  <div>
+                  <ul class="navbar-nav m-auto mb-2 mb-lg-0 py-5 px-3">
+                      <h6>All Categories</h6>
+                      <li class="nav-item">
+                          <a class="nav-link " aria-current="page" href="">Accessories</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="">Computers</a>
+                      </li>
+                       <li class="nav-item">
+                          <a class="nav-link" href="">Mobiles</a>
+                      </li>
+                       <li class="nav-item">
+                          <a class="nav-link" href="">Tablets</a>
+                      </li>
+                       <li class="nav-item">
+                          <a class="nav-link" href="">Home Appliances</a>
+                      </li>
+                       <li class="nav-item">
+                          <a class="nav-link" href="">Watches & Perfumes</a>
+                      </li>
+                       <li class="nav-item">
+                          <a class="nav-link" href="">Travel Bags</a>
+                      </li>
+                 
+                      <hr>
+                                             <li class="nav-item">
+                          <a class="nav-link" href="" style="font-weight: 600;">Download App</a>
+                      </li>
+                       <li class="nav-item">
+                        <a href='https://play.google.com/store/apps/details?id=com.itcityonlinestore.itcity_online_store&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img style="width:100px;" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
+                      </li>
+                        
+                      <!--<li class="nav-item">-->
+                      <!--    <a class="nav-link" href="" style="font-weight: 600;">Add ITCITY To Home Screen  </a>-->
+                      <!--</li>-->
+                      
+                      </ul>
+                      
+  
+              </div>
+  </div>
+  
+  
+  <div class="content">
+  <!-- Main content goes here -->
+  </div>
+  
+  
+  <section class="country-lang">
+  <div class="container-fluid" style="padding:'0px'">
+    <div class="row">
+  
+      <div class="col-6 text-start">
+
+  
+        <select  id="country" class="country" onchange="showPopup()">
+            
+          <option>Country</option>
+         <option  value="KWD">KUWAIT</option>
+          <option  value="SAR">SAUDI ARABIA</option>
+          <option  value="QAR">QATAR</option>
+          <option value="BHD">BAHRAIN</option>
+          <option  value="OMR">OMAN</option>
+          <option value="PHP">PHILIPPINES</option>
+          <option value="AED">UAE</option>
+           <option value="INR">INDIA</option>
+        </select>
+  
+      </div>
+      
+      <div id="popup" class="popupup">
+     <form action="" method="post">
+  
+      <h2>Are you sure want to change your country</h2>
+       <input type="hidden" id="countrycode" class="countrycode" name="countrycode" value="KWD" readonly>
+      <button type="submit" class="popupok" >Yes</button>
+      <button type="button" class="popupcancel" onclick="myFunction()">No</button>
+     </form>
+     </div>
+      <div class="col-6 text-end">
+      
+          <a style="text-decoration:none;color:white;" class="col-6 text-end" href="">English</a>
+
+      </div>
+    </div>
+  </div>
+  </section>
+  </div>
+  
+
+  
+    
+    <section>
+      <div id="productslider" class="owl-carousel owl-theme">
+     
+        <div class="item">
+          <div class="shopbycollection">
+        
+          <a href="">
+            <img  src="" alt="">
+          </a>
+          </div>
+        </div>
+    
+  
+      </div>
+    </section>
+  
+
+
+{%block main-content %} {%endblock main-content%}  
+
+
+
+
+
+<div class="footer-div desktopview pt-3">
+    <div class="container">
+        <div class=" p-0 m-0 row">
+
+            <div class=" p-0 m-0 col-lg-3 col-md-6 col-sm-6">
+                <ul>
+                    <img src="{% static 'images/itcityimages/main-logo-footer.png' %}" alt="">
+
+                    
+
+
+<address style="font-weight: 600;
+    text-align: initial;">
+ 
+<!--ITCity International Farwaniya<br>Habeeb Al munawar street<br>Maghateer complex<br>Mezzanine floor<br>Farwaniya,kuwait<br> Tel: +965 90019287</address>-->
+
+                    <li><i class="fas fa-envelope" style="color:#f5831a"></i> info@itcityonlinestore.com</li>
+                    <li><i class="fas fa-mobile-alt" style="color:#f5831a"></i> +965 90019287</li>
+                    <li><i class="fas fa-map-marker-alt" style="color:#f5831a"></i> 
+                    IT City<br>Habeeb Al munawar street<br>Maghateer complex<br>Mezzanine floor<br>Farwaniya,kuwait</li>
+                </ul>
+            </div>
+            <div class="p-0 m-0 col-lg-3 col-md-6 col-sm-6">
+                <ul>
+                    <h5>Information</h5>
+                    <li><a href="">Delivery Information</a></li>
+                    <li><a href="">Privacy Policy</a></li>
+                    <li><a href="">Terms&amp;Condition</a></li>
+                </ul>
+            </div>
+            <div class="p-0 m-0 col-lg-3 col-md-6 col-sm-6">
+                <ul>
+                    <h5>abc</h5>
+                    <li><a href="">Accessories</a></li>
+                    <li><a href="">Computers</a></li>
+                    <li><a href="">Mobiles</a></li>
+                    <li><a href="">Tablets</a></li>
+                    <li><a href="">Home Appliances</a></li>
+                    <li><a href="">Watches &amp; Perfumes</a></li>
+                    <li><a href="">Travel Bags</a></li>
+                    <li><a href="">Personal Care</a></li>
+                    <li><a href="">Cameras &amp; Drones </a></li>
+                    <li><a href="">Gaming</a></li>
+                </ul>
+            </div>
+            <div class="p-0 m-0 col-lg-3 col-md-6 col-sm-6">
+                <ul>
+                    <h5>Service</h5>
+                  
+                    <li><a href="">Shopping Cart</a></li>
+                    <li><a href="">Return Policy</a></li>
+                    <li><a href="">About Us</a></li>
+                </ul>
+                <ul class="footersocial d-flex">
+                    <!--style="color:#f48120"-->
+                    <li ><a title="Connect us on Facebook" target="_blank" href="https://www.facebook.com/ItCitycomputer/"><i  class="fab fa-facebook"></i></a></li>
+                    <li ><a title="Connect us on Twitter" target="_blank" href="https://twitter.com/itcitykuwait"><i  class="fab fa-twitter-square"></i></a></li>
+                    <li><a title="Connect us on youtube" target="_blank" href="https://www.youtube.com/channel/UCQKb_8AOnVB7euYZWoQke_w?view_as=subscriber"><i  class="fab fa-youtube"></i></a></li>
+                    <li><a title="Connect us on Instagram" target="_blank" href="https://www.instagram.com/itcity_international/"><i  class="fab fa-instagram-square"></i></a></li>
+                     <li><a title="Connect us on Instagram" target="_blank" href="https://www.instagram.com/itcity_international/"><i class="fab fa-tiktok"></i></a></li>
+                       <li><a title="Connect us on Instagram" target="_blank" href="https://www.instagram.com/itcity_international/"><i class="fab fa-google-plus-square"></i></a></li>
+                  
+                </ul>
+                 <ul class="footerplaystore">
+                      <h6 style="color:#fff">Download App</h6>
+              
+                     
+                     
+                 <a href='https://play.google.com/store/apps/details?id=com.itcityonlinestore.itcity_online_store&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img style="width:160px;" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
+                
+                </ul>
+            </div>
+
+            <!--<div class="bottom-footer"><h6>© 2019 IT CITY ONLINE STORE </h6></div>-->
+
+
+        </div>
+
+    </div>
+</div>
+
+<!--<div class="container"><hr></div>-->
+
+<div class="bottom-footer">
+    <hr style="margin:0px;opacity:0.9;">
+    <h6>© 2023 IT CITY ONLINE STORE </h6>
+</div>
+
+<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>  
+
+<script type="text/javascript" src="{% static 'js/scriptfont.js' %}"></script>  
+<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>  
+<script type="text/javascript" src="{% static 'js/owl.carousel.min.js' %}"></script>  
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+
+
+{% comment %} 
+  <script>
+    $(function() {
+      // Define URL to fetch autocomplete data
+      var autocompleteUrl = "{% url 'spaceautocomplete' %}";
+    
+      // Set up autocomplete for search input
+      $("#search-input").autocomplete({
+      source: autocompleteUrl,
+      minLength: 1, // Minimum characters to trigger autocomplete
+      });
+    });
+    </script>
+
+ {% endcomment %}
+
+  <script>
+    $(document).ready(function () {
+      $('#productslider').owlCarousel({
+
+        loop: true,
+        margin: 10,
+        nav: false,
+        dots: false,
+        autoplay: true,
+        responsive: {
+          0: {
+            items: 1
+          },
+          600: {
+            items: 1
+          },
+          1000: {
+            items: 1
+          }
+        }
+      })
+    })
+  </script>
+  <script>
+    $(document).ready(function () {
+      $("#testimonial-slider").owlCarousel({
+        items: 1,
+        nav: true,
+        // nav: false,
+        dots: false,
+        itemsDesktop: [1000, 1],
+        itemsDesktopSmall: [979, 1],
+        itemsTablet: [768, 1],
+        margin: 10,
+        pagination: false,
+        navigation: true,
+        navigationText: ["", ""],
+        autoPlay: true
+      });
+    });
+  </script>
+  <script>
+    $(document).ready(function () {
+      $("#testimonial-slider").owlCarousel({
+        items: 1,
+        itemsDesktop: [1000, 1],
+        itemsDesktopSmall: [979, 1],
+        itemsTablet: [768, 1],
+        margin: 10,
+        pagination: false,
+        navigation: true,
+        navigationText: ["", ""],
+        autoPlay: true
+      });
+    });
+  </script>
+<!--add to cart message -->
+<script>
+    function showPopup() {
+      // Display the popup box
+      document.getElementById("popup-box").style.display = "block";
+
+      // Automatically close the popup after 3 seconds
+      setTimeout(function() {
+        hidePopup();
+      }, 2000);
+    }
+
+    function hidePopup() {
+      // Hide the popup box
+      document.getElementById("popup-box").style.display = "none";
+    }
+</script>
+
+
+  <!-- $(document).ready(function(){
+    $(".owl-carousel").owlCarousel({
+    autoWidth:true,
+  
+      margin: 10,
+     
+     
+        items:4,
+      loop:true,
+      margin:10,
+      autoplay:true,
+      autoplayTimeout:1000,
+      autoplayHoverPause:true
+    });
+  }); -->
+
+</body>
+
+</html>

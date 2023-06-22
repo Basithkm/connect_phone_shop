@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{% endblock title %}
+
+{%block main-content %}
+
+
+          <div class="top-icons">
+              
+            <div class="top-cart-icons">
+            <a class="cart-btn" href="">
+              <img src="{% static 'images/itcity/shopping-cart.png' %}" alt="">
+              <div id="mcart" class="cart-items-value">1</div>
+              </a>
+            </div>
+            <div class="top-user-icons">
+            
+              <div class=" hover-box" >
+               <a class="cart-btn" href="">
+                <img src="{% static 'images/itcity/user.png' %}" alt="">
+                
+                </a>
+    
+                </div>
+          
+         
+            </div>
+        </div>
+        </div>
+       
+
+      
+    </div>
+
+ 
+  
+<!--Mobileresponsive-->
+
+
+
+<div class="content">
+<!-- Main content goes here -->
+</div>
+
+
+<section class="country-lang">
+<div class="container-fluid" style="padding:'0px'">
+  <div class="row">
+    <div class="col-6 text-start">
+
+    </div>
+    
+
+    <div class="col-6 text-end">
+    </div>
+  </div>
+</div>
+</section>
+</div>
+
+<div class="container">
+<div id="srchrlt" class="d-flex flex-wrap"></div>
+</div>
+
+  <section>
+    <div id="productslider" class="owl-carousel owl-theme">
+   
+      <div class="item">
+        <div class="shopbycollection">
+      
+        <a href="">
+          <img  src="" alt="">
+        </a>
+        </div>
+      </div>
+  
+
+    </div>
+  </section>
+  <section>
+    <div class="container p-0 " >
+      <div class="row">
+        <div class="col-md-12">
+          <div class="main-categories ">
+
+
+
+           
+            {% for product in category %}
+        
+            <div class="main-categories-sub">
+
+           <a href="{% url 'filter_brand' product.id %}">  
+          
+              <img src="{{product.category_image.url}}" alt="">
+          
+
+              <p>{{product.category_name}}</p> </a>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container-fluid">
+      <div class="row home-sub-head" style="padding-top:0px;">
+        <div class="col-6 text-start home-sub">
+          <h1>
+            Accessories
+          </h1>
+        </div>
+        <div class="col-6 text-end">
+          <div class="view-all">
+          <a  href="{% url 'view_all' %}"> View All</a>
+          </div>
+        </div>
+      </div>
+          <div class='bannerimage'>
+            <img src="{% static 'images/itcityimages/homebackground/accessories.jpg' %}" alt="">
+      
+      </div>
+      <div class='bannerimagemobile'>
+        <img src="{% static 'images/itcityimages/homebackground/accessoriesmobile.jpg' %}" alt="">
+        <img src="" alt=""></img>
+      </div>
+
+      <div class='content'>
+        {% for products in products %} 
+        <div class='newdesign'>
+          <a href="{{ products.get_url }}"> 
+            <img src="{{products.images.url}}" alt="">
+
+          <p style="font-size:14px;margin-bottom:0.5rem;">{{products.phone_name}}</p>
+          <p style="font-weight:600;font-size:18px;color: #f5831a;margin-bottom: 4px;" class="">{{products.phone_name}}</p>
+          <p style="font-weight:600;font-size:18px;color: #f5831a;margin-bottom: 4px;" class="">{{products.brand}}</p>
+          <div class="font-body"><span
+              style="font-weight:600;font-size:14px;color: #000;margin-bottom: 4px;text-decoration: line-through;"
+              class=" ">{{products.price}}</span> <span class=""
+              style="background-color: #f5831a;font-size: 12px;color: white;padding: 3px;">{{products.price}}</span></div>
+</a>
+            
+        </div>
+        {% endfor %}
+
+  
+      </div>
+    </div>
+  </section>
+
+<!-- computer collections -->
+ 
+
+
+      </div>
+    </div>
+  </section>
+  <div class="footer-icons  mobilediv">
+    <div class="footer-icons-link nav">
+     
+        <ul class="navbar-nav" style="display:contents;">
+        <li class="nav-item active">
+            <a class="nav-link" href="">
+               <img style="width:15px;" src="front-end/images/itcity/home.png" alt="">
+               <h6>Home</h6>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="">
+                <img style="width:15px;" src="front-end/images/itcity/search.png" alt="">
+              <h6>Search</h6>  
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="">
+                <img style="width:15px;" src="front-end/images/itcity/categories.png" alt="">
+              <h6>Categories</h6>  
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="">
+                <img style="width:15px;" src="front-end/images/itcity/shopping.png" alt="">
+                <h6>Cart</h6> 
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"  href="">
+            <img style="width:15px;" src="front-end/images/itcity/userone.png" alt="">
+            <h6>Profile</h6> 
+               </a>
+        </li>
+    </ul>
+    
+    </div>
+</div>
+
+
+
+
+  {%endblock main-content%} 

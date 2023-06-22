@@ -1,0 +1,55 @@
+
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{% endblock title %}
+
+{%block main-content %}
+
+
+<div class="container payment">
+    <div class="registration row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-12 px-4">
+            <h5 class="cart-modal-title fw-7 fs-15 font-manrope text-center">Log in or register</h5>
+            <div class="cart-modal-list grid">
+                <div class="text-capitalize view-cart-btn bg-orange fs-15 font-manrope ">
+                <form  class="login-form" role="form" action="{% url 'signin'%}" method="post">
+                    {% csrf_token %}
+                        <div><input name="email" placeholder="Enter your email" type="email"
+                                class="rounded-0 my-2 form-control"></div>
+                        <div><input name="password" placeholder="Enter your  password" type="password"
+                                class="rounded-0 my-2 form-control"></div>
+                        <div class="loginbutton"><button type="submit" class="btn btn-dark">Login</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class=" registerform  col-lg-6 col-md-6 col-sm-6 col-12 px-4">
+            <h5 class="cart-modal-title fw-7 fs-15 font-manrope text-center">Register</h5>
+
+<form class="login-form" role="form" action="" method="post" name="form1">
+    {% csrf_token %}
+                <div><input placeholder="Enter your your name" type="text" 
+                        class="rounded-0 my-2 form-control"value="" placeholder="Username" required="" name="first_name" onkeydown="return myf(event)">
+                        <span id="error" style="color:red;display:none">Please Enter Only Alphabets...</span></div>
+                <div><input placeholder="Enter your  email" type="email" value="" placeholder="Email" required="" name="email" id="email"
+                        class="rounded-0 my-2 form-control"> <span style="color:red"></span>
+                        <span id="emailmsg"></span></div>
+                <div><input placeholder="Enter your  phone number" type="email" value="" placeholder="Phone Number :" required="" name="email" id="email"
+                        class="rounded-0 my-2 form-control"> <span style="color:red"></span>
+                        <span id="emailmsg"></span></div>
+                <div><input placeholder="Enter your  password" type="password" id="password" name="password1"
+                        class="rounded-0 my-2 form-control"></div>
+                        <div><input placeholder="Confirm Password" type="password" id="password" name="password2"
+                        class="rounded-0 my-2 form-control"></div>
+                <div class="loginbutton"><button type="submit" class="btn btn-dark" onclick='Javascript:checkEmail();'>Register</button></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+  </div>
+</div>
+
+{%endblock main-content%} 

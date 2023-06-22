@@ -1,0 +1,77 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} huhbg {% endblock %}
+{% block css %}
+<style>
+    #id_quantity {
+        padding: 10px;
+    }
+
+    .forms {
+        border: 0.3px solid gray;
+        padding: 10px;
+    }
+    .btns
+    {
+        padding:10px;
+        border-radius: 5px;
+        color: white;
+    }
+</style>
+
+{% endblock %}
+{% block body %}
+{% if product %}
+
+
+<div class="container row">
+    <div class="col-6">
+        <img src="{% if product.cover_image %}  {{product.cover_image.url}} {% else %} {% static 'img/image-not-avilable.jpg' %} {% endif %}"
+             height="100%" width="600   " style="margin-left: -100px;">
+    </div>
+    <div class="col-6">
+        <h1 class="text-primary text-center">{{product.phone_name}}</h1>
+        {% comment %} <h2 class="text-center text-secondary"><a href="{{ product.category.get_absolute_url }}"> {% endcomment %}
+            {{product.category}}</a></h2>
+        <p class="text-center text-danger fs-1">${{ product.price }}</p>
+        <div class="mb-3">
+
+            <form class="forms" action="{% url 'cart:cart_add' product.id %}" method="post">
+                {% csrf_token %}
+                {{cart_product_form}}
+                <input type="submit" value="Add to Cart" class="btns btn-success">
+            </form>
+        </div>
+
+        {% comment %} <p class="text fs-3">{{ product.description }}</p> {% endcomment %}
+    </div>
+    
+</div>
+<div class="row">
+    {% if product.image1 %}
+      <div class="col-md-4">
+        <img class="product-image" src="{{product.image1.url}}" alt="Product Image 1">
+      </div>
+      {% endif %}
+      {% if product.image2 %}
+      <div class="col-md-4">
+        <img class="product-image" src="{{product.image2.url}}" alt="Product Image 1">
+      </div>
+      {% endif %}
+      {% if  product.image3%}
+      <div class="col-md-4">
+        <img class="product-image" src="{{product.image3.url}}" alt="Product Image 1">
+      </div>
+      {% endif %}
+      {% if product.image4  %}
+      <div class="col-md-4">
+        <img class="product-image" src="{{product.image4.url}}" alt="Product Image 1">
+      </div>
+      {% endif %}
+
+      
+    </div>
+
+{% endif %}
+{% endblock %}

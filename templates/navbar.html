@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-success">
+    <div class="container-fluid text-center">
+        {% comment %} <a class="navbar-brand text-white fs-1" href="{% url 'shop:product_list' %}">My Blog</a> {% endcomment %}
+    {% comment %} </div>
+    <div class="text-white">
+        <i class="fa fa-shopping-cart" style="font-size: 30px; margin-left: -270px">&nbsp;</i>
+        <b class="text-white">
+            {% with total_items=cart|length %}
+            {% if cart|length > 0 %}
+            Your Cart :<a href="{% url 'cart:cart_detail' %}" class="text-white">
+            {{ total_items }} item'{{ total_items|pluralize }},
+            Rs. {{cart.get_total_price }}
+        </a>
+            {% else %}
+            Your cart is Empty
+            {% endif %}
+            {% endwith %}
+
+        </b>
+
+    </div> {% endcomment %}
+
+    <a href="{% url 'cart:cart_detail' %}" class="btn btn-success">Cart</a> 
+    <a href="{% url 'orders:view_orders' %}" class="btn btn-success">order</a> 
+    <a href="{% url 'index' %}" class="btn btn-success">index</a> 
+    
+
+</nav>

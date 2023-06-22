@@ -1,0 +1,61 @@
+
+
+
+  
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Product List</title>
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="row">
+          <!-- row justify-content-center -->
+          <div class="col-md-6 mx-auto">
+            <h1>Registration</h1>
+            <form  method="POST" name="myForm" onsubmit="return validateForm()">
+              {% csrf_token %}
+              <div class="form-row">
+                <div class="form-group col-md-12">
+      
+                  <label for="inputName">First Name :</label>
+                  <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First Name" required>
+                  
+                  <label for="inputName">Email :</label>
+                  <input type="email" class="form-control"  name="email" id="email" placeholder="Email" required>
+                  
+                  <label for="inputName">Phone Number :</label>
+                  <input type="number" class="form-control" name="phone_number" id="phone_number" placeholder="Phone Number" required>
+                  
+                  <label for="inputName">Password :</label>
+                  <input type="password" class="form-control"  name="password1" id="password1" placeholder="Password" required>
+                  
+                  <label for="inputName">confirm Password :</label>
+                  <input type="password" class="form-control"  name="password2" id="password2" placeholder="Confirm Password" required>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Sumbit</button>
+            </form>
+            {% comment %} <div>already an account? <span><a href="{% url 'signin' %}">Login</a></span></div> {% endcomment %}
+      
+      
+          </div>
+          
+        </div>
+      </div>
+</body>
+
+
+
+</html> 
+

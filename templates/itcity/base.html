@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT City online store</title>
+  <link rel="stylesheet" href="front-end/css/bootstrap.min.css">
+  <link rel="stylesheet" href="front-end/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="front-end/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="front-end/css/owl.theme.default.min.css">
+<link rel="icon" type="image/x-icon" href="/front-end/images/itcityimages/favicon.png">
+  
+
+</head>
+
+<body>
+  <div class="container-fluid top  ps-0 pe-0 " style="z-index:9999">
+    <div class="row">
+        
+        <div class="col-md-2 col-sm-12 col-12 logo">
+        <div> 
+<button class="hamburger-btn" onclick="toggleSidebar()">&#9776;</button>
+ </div>  
+
+         <div> 
+        <a  href="{{url('/')}}">
+             <img src="front-end/images/itcityimages/logo-it.png" alt="">
+        </a>
+        </div> 
+          <div class="top-icons">
+              
+            <div class="top-cart-icons">
+            <a class="cart-btn" href="{{url('my-cart')}}">
+             <img src="front-end/images/itcity/shopping-cart.png" alt="">
+              <div id="mcart" class="cart-items-value">1</div>
+              </a>
+            </div>
+            <div class="top-user-icons">
+            
+              <div class=" hover-box" >
+               <a class="cart-btn" href="{{url('my-account')}}">
+                    <img src="front-end/images/itcity/user.png" alt="">
+                </a>
+               <!-- <div class="box-content">-->
+               <!--<a href="{{url('my-account')}}">Profile</a><br>-->
+               <!--<a href="{{url('my-account')}}">My Order</a><br>-->
+               <!--<a href="{{url('my-account')}}">Logout</a><br>-->
+               <!-- </div>-->
+                </div>
+          
+         
+            </div>
+        </div>
+        </div>
+        <div class="col-md-8 header">
+
+            <div class='search'>
+            <form action="{{url('/search')}}" method="get">
+           
+                <div class="searchBar">
+
+                    <input id="searchQueryInput"  name="value" type="text" placeholder="Search Products,Brands and More" />
+                    <div className='d-flex'>
+
+                        <button id="searchQuerySubmit" type="submit" name="searchQuerySubmit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+
+        <div class="col-md-2 d-flex header-icons ">
+              
+            <div class="cart-icons">
+            <a class="cart-btn" href="{{url('my-cart')}}">
+              <i class="fas fa-shopping-cart"></i>
+              <div id="mcartweb" class="cart-items-value"></div>
+              </a>
+            </div>
+            <div class="user-icons">
+         
+              <div class=" hover-box" >
+               <a href="{{url('my-account')}}"><i class="fas fa-user"></i></a>
+               <!-- <div class="box-content">-->
+               <!--<a href="{{url('my-account')}}">Profile</a><br>-->
+               <!--<a href="{{url('my-account')}}">My Order</a><br>-->
+               <!--<a href="{{url('my-account')}}">Logout</a><br>-->
+               <!-- </div>-->
+                </div>
+            
+          
+            </div>
+        </div>
+    </div>
+
+    <nav class="main-navbar navbar navbar-expand-lg navbar-light p-0">
+        <div class="container">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="{{url('category-products/accessories')}}">Accessories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('category-products/computers')}}">Computers</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{url('category-products/mobiles')}}">Mobiles</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{url('category-products/tablets')}}">Tablets</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{url('category-products/home-appliances')}}">Home Appliances</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{url('category-products/watches-perfume')}}">Watches & Perfumes</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{url('category-products/travel-bags')}}">Travel Bags</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{url('category-products/personal-care')}}">Personal Care</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{url('category-products/cameras-drones')}}">Cameras & Drones</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{url('category-products/gaming')}}">Game Zone</a>
+                    </li>
+            </div>
+        </div>
+    </nav>
+  
+<!--Mobileresponsive-->
+
+<div class="sidebar" id="sidebar">
+  <span  class="popup-close" onclick="myFun()">&times;</span>
+<div>
+                <ul class="navbar-nav m-auto mb-2 mb-lg-0 py-5 px-3">
+                    <h6>All Categories</h6>
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="{{url('category-products/accessories')}}">Accessories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('category-products/computers')}}">Computers</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{url('category-products/mobiles')}}">Mobiles</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{url('category-products/tablets')}}">Tablets</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{url('category-products/home-appliances')}}">Home Appliances</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{url('category-products/watches-perfume')}}">Watches & Perfumes</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{url('category-products/travel-bags')}}">Travel Bags</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{url('category-products/personal-care')}}">Personal Care</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{url('category-products/cameras-drones')}}">Cameras & Drones</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{url('category-products/gaming')}}">Game Zone</a>
+                    </li>
+                    <hr>
+                                           <li class="nav-item">
+                        <a class="nav-link" href="" style="font-weight: 600;">Download App</a>
+                    </li>
+                     <li class="nav-item">
+                      <a href='https://play.google.com/store/apps/details?id=com.itcityonlinestore.itcity_online_store&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img style="width:100px;" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
+                    </li>
+                      
+                    <!--<li class="nav-item">-->
+                    <!--    <a class="nav-link" href="" style="font-weight: 600;">Add ITCITY To Home Screen  </a>-->
+                    <!--</li>-->
+                    
+                    </ul>
+                    
+
+            </div>
+</div>
+
+
+<div class="content">
+<!-- Main content goes here -->
+</div>
+
+
+<section class="country-lang">
+<div class="container-fluid" style="padding:'0px'">
+  <div class="row">
+
+    <div class="col-6 text-start">
+<!--<div class="dropdown">-->
+<!--            <button class="btn btn-dark text-white btn-lg dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><span class="flag-icon flag-icon-us me-1"></span> <span>English</span></button>-->
+<!--            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">-->
+<!--                <li>-->
+<!--                    <a class="dropdown-item active" href="#"><span class="flag-icon flag-icon-us me-1"></span> <span>KUWAIT</span></a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-fr me-1"></span> <span>SAUDI ARABIA</span></a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-es me-1"></span> <span>QATAR</span></a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-sa me-1"></span> <span>BAHRAIN</span></a>-->
+<!--                </li>-->
+            
+<!--                 <li>-->
+<!--                    <a class="dropdown-item active" href="#"><span class="flag-icon flag-icon-us me-1"></span> <span>OMAN</span></a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-fr me-1"></span> <span>PHILIPPINES</span></a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-es me-1"></span> <span>UAE</span></a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-sa me-1"></span> <span>INDIA</span></a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+
+
+      <select  id="country" class="country" onchange="showPopup()">
+          
+        <option>Country</option>
+       <option  value="KWD">KUWAIT</option>
+        <option  value="SAR">SAUDI ARABIA</option>
+        <option  value="QAR">QATAR</option>
+        <option value="BHD">BAHRAIN</option>
+        <option  value="OMR">OMAN</option>
+        <option value="PHP">PHILIPPINES</option>
+        <option value="AED">UAE</option>
+         <option value="INR">INDIA</option>
+      </select>
+
+    </div>
+    
+    <div id="popup" class="popupup">
+   <form action="{{url('country-change')}}" method="post">
+    {{csrf_field()}}
+    <h2>Are you sure want to change your country</h2>
+     <input type="hidden" id="countrycode" class="countrycode" name="countrycode" value="KWD" readonly>
+    <button type="submit" class="popupok" >Yes</button>
+    <button type="button" class="popupcancel" onclick="myFunction()">No</button>
+   </form>
+   </div>
+    <div class="col-6 text-end">
+    
+        <a style="text-decoration:none;color:white;" class="col-6 text-end" href="{{url('lang/change/en')}}">English</a>
+        <!---->
+     
+        <!--عربي-->
+      
+      <!--<select >-->
+      <!--  <option  >Language</option>-->
+      <!--  <option value="en">English</option>-->
+      <!--  <option value="ar"  >Arabic</option>-->
+      <!--</select>-->
+    </div>
+  </div>
+</div>
+</section>
+</div>
+
+<!--   <div id="popup-blink">-->
+<!--       <-->
+<!--  <p>Click here to download the app!</p>-->
+<!--  <a href="app-download-link">Download</a>-->
+<!--</div>-->
+<!---countrypopup--->
+<div class="container">
+<div id="srchrlt" class="d-flex flex-wrap"></div>
+</div>
+
+
+  
+  <section>
+    <div id="productslider" class="owl-carousel owl-theme">
+   
+      <div class="item">
+        <div class="shopbycollection">
+      
+        <a href="">
+          <img  src="" alt="">
+        </a>
+        </div>
+      </div>
+  
+
+    </div>
+  </section>
+  <section>
+    <div class="container p-0 " >
+      <div class="row">
+        <div class="col-md-12">
+          <div class="main-categories ">
+            <div class="main-categories-sub">
+            <a href="{{url('category-products/accessories')}}">  
+              <img src="front-end/images/itcityimages/app_image/accessories.png" alt="">
+             
+              <p>Accessories</p> </a>
+            </div>
+            <div class="main-categories-sub">
+            <a href="{{url('category-products/computers')}}">    
+              <img src="front-end/images/itcityimages/app_image/computers.png" alt="">
+              
+              <p>Computers</p></a>
+            </div>
+            <div class="main-categories-sub">
+            <a href="{{url('category-products/mobiles')}}"> 
+              <img src="front-end/images/itcityimages/app_image/mobile.png" alt="">
+           
+              <p>Mobiles</p>   </a>
+            </div>
+            <div class="main-categories-sub">
+            <a href="{{url('category-products/tablets')}}"> 
+              <img src="front-end/images/itcityimages/app_image/tabe.png" alt="">
+             
+              <p>Tablets</p> </a>
+            </div>
+            <div class="main-categories-sub">
+            <a href="{{url('category-products/home-appliances')}}"> 
+              <img src="front-end/images/itcityimages/app_image/home.png" alt="">
+              
+              <p>Home Appliances</p></a>
+            </div>
+            <div class="main-categories-sub">
+            <a href="{{url('category-products/watches-perfume')}}"> 
+              <img src="front-end/images/itcityimages/app_image/watch.png" alt="">
+             
+              <p>Watches & Perfumes</p> </a>
+            </div>
+            <div class="main-categories-sub">
+            <a href="{{url('category-products/travel-bags')}}"> 
+              <img src="front-end/images/itcityimages/app_image/travel.png" alt="">
+             
+              <p>Travel Bags</p> </a>
+            </div>
+            <div class="main-categories-sub">
+            <a href="{{url('category-products/personal-care')}}"> 
+              <img src="front-end/images/itcityimages/app_image/personal.png" alt="">
+             
+              <p>Personal Care</p> </a>
+            </div>
+            <div class="main-categories-sub">
+            <a href="{{url('category-products/cameras-drones')}}"> 
+              <img src="front-end/images/itcityimages/app_image/camera.png" alt="">
+             
+              <p>Cameras & Drones</p> </a>
+            </div>
+            <div class="main-categories-sub">
+            <a href="{{url('category-products/gaming')}}"> 
+              <img src="front-end/images/itcityimages/app_image/offer.png" alt="">
+             
+              <p>Game Zone</p> </a>
+            </div>
+          
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container-fluid">
+      <div class="row home-sub-head" style="padding-top:0px;">
+        <div class="col-6 text-start home-sub">
+          <h1>
+            Accessories
+          </h1>
+        </div>
+        <div class="col-6 text-end">
+          <div class="view-all">
+          <a  href="category-products/accessories"> View All</a>
+          </div>
+        </div>
+      </div>
+          <div class='bannerimage'>
+        <img src="" alt=""></img>
+        <img src="front-end/images/itcityimages/homebackground/accessories.jpg" alt=""></img>
+      </div>
+      <div class='bannerimagemobile'>
+        <img src="front-end/images/itcityimages/homebackground/accessoriesmobile.jpg" alt=""></img>
+        <img src="" alt=""></img>
+      </div>
+      <!--<div class="row">-->
+      <!--  <img src="{{URL::to('/')}}/front-end/images/itcityimages/homebackground/accessories.jpg">-->
+      <!--</div>-->
+      <div class='content'>
+   
+        <div class='newdesign'>
+          <a href="">
+          <img src="front-end/images/itcityimages/product/1.jpg">
+          <p style="font-size:14px;margin-bottom:0.5rem;">Haino Teko P 4True Wireless Earpods - White
+          </p>
+          <p style="font-weight:600;font-size:18px;color: #f5831a;margin-bottom: 4px;" class="  ">$120</p>
+          <div class="font-body"><span
+              style="font-weight:600;font-size:14px;color: #000;margin-bottom: 4px;text-decoration: line-through;"
+              class=" ">$150</span> <span class=""
+              style="background-color: #f5831a;font-size: 12px;color: white;padding: 3px;">1%</span></div>
+</a>
+            
+        </div>
+        <div class='newdesign'>
+          <a href="">
+          <img src="front-end/images/itcityimages/product/1.jpg">
+          <p style="font-size:14px;margin-bottom:0.5rem;">Haino Teko P 4True Wireless Earpods - White
+          </p>
+          <p style="font-weight:600;font-size:18px;color: #f5831a;margin-bottom: 4px;" class="  ">$120</p>
+          <div class="font-body"><span
+              style="font-weight:600;font-size:14px;color: #000;margin-bottom: 4px;text-decoration: line-through;"
+              class=" ">$150</span> <span class=""
+              style="background-color: #f5831a;font-size: 12px;color: white;padding: 3px;">1%</span></div>
+</a>
+            
+        </div>
+        <div class='newdesign'>
+          <a href="">
+          <img src="front-end/images/itcityimages/product/1.jpg">
+          <p style="font-size:14px;margin-bottom:0.5rem;">Haino Teko P 4True Wireless Earpods - White
+          </p>
+          <p style="font-weight:600;font-size:18px;color: #f5831a;margin-bottom: 4px;" class="  ">$120</p>
+          <div class="font-body"><span
+              style="font-weight:600;font-size:14px;color: #000;margin-bottom: 4px;text-decoration: line-through;"
+              class=" ">$150</span> <span class=""
+              style="background-color: #f5831a;font-size: 12px;color: white;padding: 3px;">1%</span></div>
+</a>
+            
+        </div>
+        <div class='newdesign'>
+          <a href="">
+          <img src="front-end/images/itcityimages/product/1.jpg">
+          <p style="font-size:14px;margin-bottom:0.5rem;">Haino Teko P 4True Wireless Earpods - White
+          </p>
+          <p style="font-weight:600;font-size:18px;color: #f5831a;margin-bottom: 4px;" class="  ">$120</p>
+          <div class="font-body"><span
+              style="font-weight:600;font-size:14px;color: #000;margin-bottom: 4px;text-decoration: line-through;"
+              class=" ">$150</span> <span class=""
+              style="background-color: #f5831a;font-size: 12px;color: white;padding: 3px;">1%</span></div>
+</a>
+            
+        </div>
+        <div class='newdesign'>
+          <a href="">
+          <img src="front-end/images/itcityimages/product/1.jpg">
+          <p style="font-size:14px;margin-bottom:0.5rem;">Haino Teko P 4True Wireless Earpods - White
+          </p>
+          <p style="font-weight:600;font-size:18px;color: #f5831a;margin-bottom: 4px;" class="  ">$120</p>
+          <div class="font-body"><span
+              style="font-weight:600;font-size:14px;color: #000;margin-bottom: 4px;text-decoration: line-through;"
+              class=" ">$150</span> <span class=""
+              style="background-color: #f5831a;font-size: 12px;color: white;padding: 3px;">1%</span></div>
+</a>
+            
+        </div>
+        <div class='newdesign'>
+          <a href="">
+          <img src="front-end/images/itcityimages/product/1.jpg">
+          <p style="font-size:14px;margin-bottom:0.5rem;">Haino Teko P 4True Wireless Earpods - White
+          </p>
+          <p style="font-weight:600;font-size:18px;color: #f5831a;margin-bottom: 4px;" class="  ">$120</p>
+          <div class="font-body"><span
+              style="font-weight:600;font-size:14px;color: #000;margin-bottom: 4px;text-decoration: line-through;"
+              class=" ">$150</span> <span class=""
+              style="background-color: #f5831a;font-size: 12px;color: white;padding: 3px;">1%</span></div>
+</a>
+            
+        </div>
+        <div class='newdesign'>
+          <a href="">
+          <img src="front-end/images/itcityimages/product/1.jpg">
+          <p style="font-size:14px;margin-bottom:0.5rem;">Haino Teko P 4True Wireless Earpods - White
+          </p>
+          <p style="font-weight:600;font-size:18px;color: #f5831a;margin-bottom: 4px;" class="  ">$120</p>
+          <div class="font-body"><span
+              style="font-weight:600;font-size:14px;color: #000;margin-bottom: 4px;text-decoration: line-through;"
+              class=" ">$150</span> <span class=""
+              style="background-color: #f5831a;font-size: 12px;color: white;padding: 3px;">1%</span></div>
+</a>
+            
+        </div>
+
+  
+      </div>
+    </div>
+  </section>
+
+<!-- computer collections -->
+ 
+
+
+      </div>
+    </div>
+  </section>
+  <div class="footer-icons  mobilediv">
+    <div class="footer-icons-link nav">
+     
+        <ul class="navbar-nav" style="display:contents;">
+        <li class="nav-item active">
+            <a class="nav-link" href="{{url('/')}}">
+               <img style="width:15px;" src="front-end/images/itcity/home.png" alt="">
+               <h6>Home</h6>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{url('search')}}">
+                <img style="width:15px;" src="front-end/images/itcity/search.png" alt="">
+              <h6>Search</h6>  
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{url('category')}}">
+                <img style="width:15px;" src="front-end/images/itcity/categories.png" alt="">
+              <h6>Categories</h6>  
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{url('my-cart')}}">
+                <img style="width:15px;" src="front-end/images/itcity/shopping.png" alt="">
+                <h6>Cart</h6> 
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"  href="{{url('my-account')}}">
+            <img style="width:15px;" src="front-end/images/itcity/userone.png" alt="">
+            <h6>Profile</h6> 
+               </a>
+        </li>
+    </ul>
+    
+    
+    
+        
+ <!--       <div class="nav-item active">-->
+ <!--           <a href="{{url('/')}}">-->
+ <!--               <i class="fas fa-home"></i>-->
+ <!--<span class="sr-only">-->
+ <!--                   (current)-->
+ <!--               </span>-->
+ <!--               <h6>Home</h6>-->
+ <!--           </a></div>-->
+ <!--       <div class="nav-item"><a eventkey="link-1" href="{{url('search')}}">-->
+ <!--               <i class="fas fa-search"></i>-->
+
+ <!--               <h6>Search</h6>-->
+ <!--           </a></div>-->
+ <!--       <div class="nav-item"><a href="{{url('category')}}">-->
+ <!--               <i class="fas fa-th"></i>-->
+ <!--               <h6>Categories</h6>-->
+ <!--           </a></div>-->
+ <!--       <div class="nav-item"><a href="{{url('my-cart')}}">-->
+ <!--               <i class="fas fa-cart-plus"></i>-->
+ <!-- <img src="{{URL::to('/')}}/front-end/images/itcity/shopping-cart.png" alt="">-->
+ <!--               <h6>Cart</h6>-->
+ <!--           </a></div>-->
+ <!--       <div class="nav-item"><a href="{{url('my-account')}}">-->
+
+ <!--               <i class="fas fa-user"></i>-->
+
+ <!--               <h6>Profile</h6>-->
+ <!--           </a>-->
+ <!--           </div>-->
+    </div>
+</div>
+
+
+
+<div class="footer-div desktopview pt-3">
+    <div class="container">
+        <div class=" p-0 m-0 row">
+
+            <div class=" p-0 m-0 col-lg-3 col-md-6 col-sm-6">
+                <ul>
+                    <img src="front-end/images/itcityimages/main-logo-footer.png" alt="">
+
+
+<address style="font-weight: 600;
+    text-align: initial;">
+ 
+<!--ITCity International Farwaniya<br>Habeeb Al munawar street<br>Maghateer complex<br>Mezzanine floor<br>Farwaniya,kuwait<br> Tel: +965 90019287</address>-->
+
+                    <li><i class="fas fa-envelope" style="color:#f5831a"></i> info@itcityonlinestore.com</li>
+                    <li><i class="fas fa-mobile-alt" style="color:#f5831a"></i> +965 90019287</li>
+                    <li><i class="fas fa-map-marker-alt" style="color:#f5831a"></i> 
+                    IT City<br>Habeeb Al munawar street<br>Maghateer complex<br>Mezzanine floor<br>Farwaniya,kuwait</li>
+                </ul>
+            </div>
+            <div class="p-0 m-0 col-lg-3 col-md-6 col-sm-6">
+                <ul>
+                    <h5>Information</h5>
+                    <li><a href="{{url('delivery-information')}}">Delivery Information</a></li>
+                    <li><a href="{{url('privacy-policy')}}">Privacy Policy</a></li>
+                    <li><a href="{{url('terms-conditions')}}">Terms&amp;Condition</a></li>
+                </ul>
+            </div>
+            <div class="p-0 m-0 col-lg-3 col-md-6 col-sm-6">
+                <ul>
+                    <h5>{{ __('main.Categories') }}</h5>
+                    <li><a href="{{url('category-products/accessories')}}">Accessories</a></li>
+                    <li><a href="{{url('category-products/computers')}}">Computers</a></li>
+                    <li><a href="{{url('category-products/mobiles')}}">Mobiles</a></li>
+                    <li><a href="{{url('category-products/tablets')}}">Tablets</a></li>
+                    <li><a href="{{url('category-products/home-appliances')}}">Home Appliances</a></li>
+                    <li><a href="{{url('category-products/watches-perfume')}}">Watches &amp; Perfumes</a></li>
+                    <li><a href="{{url('category-products/travel-bags')}}">Travel Bags</a></li>
+                    <li><a href="{{url('category-products/personal-care')}}">Personal Care</a></li>
+                    <li><a href="{{url('category-products/cameras-drones')}}">Cameras &amp; Drones </a></li>
+                    <li><a href="{{url('category-products/gaming')}}">Gaming</a></li>
+                </ul>
+            </div>
+            <div class="p-0 m-0 col-lg-3 col-md-6 col-sm-6">
+                <ul>
+                    <h5>Service</h5>
+                    <!-- <li><a href="{{url('category')}}">Wish List</a></li> -->
+                    <li><a href="{{url('my-cart')}}">Shopping Cart</a></li>
+                    <li><a href="{{url('return-policy')}}">Return Policy</a></li>
+                    <li><a href="{{url('about-us')}}">About Us</a></li>
+                </ul>
+                <ul class="footersocial d-flex">
+                    <!--style="color:#f48120"-->
+                    <li ><a title="Connect us on Facebook" target="_blank" href="https://www.facebook.com/ItCitycomputer/"><i  class="fab fa-facebook"></i></a></li>
+                    <li ><a title="Connect us on Twitter" target="_blank" href="https://twitter.com/itcitykuwait"><i  class="fab fa-twitter-square"></i></a></li>
+                    <li><a title="Connect us on youtube" target="_blank" href="https://www.youtube.com/channel/UCQKb_8AOnVB7euYZWoQke_w?view_as=subscriber"><i  class="fab fa-youtube"></i></a></li>
+                    <li><a title="Connect us on Instagram" target="_blank" href="https://www.instagram.com/itcity_international/"><i  class="fab fa-instagram-square"></i></a></li>
+                     <li><a title="Connect us on Instagram" target="_blank" href="https://www.instagram.com/itcity_international/"><i class="fab fa-tiktok"></i></a></li>
+                       <li><a title="Connect us on Instagram" target="_blank" href="https://www.instagram.com/itcity_international/"><i class="fab fa-google-plus-square"></i></a></li>
+                  
+                </ul>
+                 <ul class="footerplaystore">
+                      <h6 style="color:#fff">Download App</h6>
+              
+                     
+                     
+                 <a href='https://play.google.com/store/apps/details?id=com.itcityonlinestore.itcity_online_store&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img style="width:160px;" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
+                
+                </ul>
+            </div>
+
+            <!--<div class="bottom-footer"><h6>© 2019 IT CITY ONLINE STORE </h6></div>-->
+
+
+        </div>
+
+    </div>
+</div>
+
+<!--<div class="container"><hr></div>-->
+
+<div class="bottom-footer">
+    <hr style="margin:0px;opacity:0.9;">
+    <h6>© 2023 IT CITY ONLINE STORE </h6>
+</div>
+  <script src="front-end/js/bootstrap.min.js"></script>
+  <script src="front-end/js/scriptfont.js"></script>
+  <script src="front-end/js/jquery.min.js"></script>
+  <script src="front-end/js/owl.carousel.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $('#productslider').owlCarousel({
+
+        loop: true,
+        margin: 10,
+        nav: false,
+        dots: false,
+        autoplay: true,
+        responsive: {
+          0: {
+            items: 1
+          },
+          600: {
+            items: 1
+          },
+          1000: {
+            items: 1
+          }
+        }
+      })
+    })
+  </script>
+  <script>
+    $(document).ready(function () {
+      $("#testimonial-slider").owlCarousel({
+        items: 1,
+        nav: true,
+        // nav: false,
+        dots: false,
+        itemsDesktop: [1000, 1],
+        itemsDesktopSmall: [979, 1],
+        itemsTablet: [768, 1],
+        margin: 10,
+        pagination: false,
+        navigation: true,
+        navigationText: ["", ""],
+        autoPlay: true
+      });
+    });
+  </script>
+  <script>
+    $(document).ready(function () {
+      $("#testimonial-slider").owlCarousel({
+        items: 1,
+        itemsDesktop: [1000, 1],
+        itemsDesktopSmall: [979, 1],
+        itemsTablet: [768, 1],
+        margin: 10,
+        pagination: false,
+        navigation: true,
+        navigationText: ["", ""],
+        autoPlay: true
+      });
+    });
+  </script>
+<!--add to cart message -->
+<script>
+    function showPopup() {
+      // Display the popup box
+      document.getElementById("popup-box").style.display = "block";
+
+      // Automatically close the popup after 3 seconds
+      setTimeout(function() {
+        hidePopup();
+      }, 2000);
+    }
+
+    function hidePopup() {
+      // Hide the popup box
+      document.getElementById("popup-box").style.display = "none";
+    }
+</script>
+
+
+  <!-- $(document).ready(function(){
+    $(".owl-carousel").owlCarousel({
+    autoWidth:true,
+  
+      margin: 10,
+     
+     
+        items:4,
+      loop:true,
+      margin:10,
+      autoplay:true,
+      autoplayTimeout:1000,
+      autoplayHoverPause:true
+    });
+  }); -->
+
+</body>
+
+</html>

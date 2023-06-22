@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{% endblock title %}about
+
+{%block main-content %}
+
+<div class="container">
+    <div id="srchrlt" class="d-flex flex-wrap"></div>
+  </div>
+  
+      <div class="container ">
+        
+          <div class="row">
+            {% for cart_item in cart_items %}
+
+              <div class="col-md-6 view-cart " >
+                  <div class="cartpage">
+                      <div class="cartpageimg">
+                  
+                            <div class="parent" style="position:relative;">
+                         
+                                <a href="{{ cart_item.product.get_url }}">
+                                <img src="{{ cart_item.product.images.url }}" alt="Product">
+                            </a>
+                            </div>
+                       
+  
+                          
+                      </div>
+                    
+      
+     
+                      <div class="cartpagecontent text-start  px-3">
+               
+                          <h5 class="mt-2" style="font-weight: bold; font-size: 18px; margin-bottom: 0.5rem;">
+                            {{cart_item.product.product_name}}</h5>
+                            <h5>Quantity: {{cart_item.product.price}}</h5>
+                            <h5>Quantity: {{cart_item.quantity}}</h5>
+                            
+                 
+                          <div class="update-cart d-flex">
+                            <a href="{% url 'remove_cart' cart_item.product.id cart_item.id %}">  <button  class="btn btn-link px-2"  type="submit"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                <i class="fas fa-minus"></i></button></a>
+                                <input type="text" name="quantity" value="{{cart_item.quantity}}" type="number"
+                                  style="width:2rem ;" class="form-control form-control-sm"  min="1"/>
+
+                                  <form action="{% url 'addcart' cart_item.product.id %}" method="POST">
+                                    {% csrf_token %}
+                                    {% for item in cart_item.variations.all %}
+                                    <input type="hidden" name="{{ item.variation_category | lower }}"
+                                      value="{{ item.variation_value | capfirst }}">
+          
+                                    {% endfor %}
+                                    <button class="btn btn-link px-2" type="submit"
+                                      onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                      <i class="fas fa-plus"></i>
+                                  </form>
+                       
+                            {% comment %} <input style="height:max-content;" class="form-control input-sm w-auto"   name="qty" type="number" value="10"  min="1">   {% endcomment %}
+                            {% comment %} <input type="submit"  style="background-color: #f5831a;color:#fff;" class="btn rd-stroke-btn border_1px dart-btn-xs mx-2 w-auto" value="Update Cart"> {% endcomment %}
+                         
+                    
+                    </div>
+
+  
+                        
+                          <h5>Total Price:{{ cart_item.sub_total }}</h5>
+                          <a href="{% url 'remove_items' cart_item.product.id cart_item.id %}" t class=" bg-dark border-0  btn btn-primary removecart">Remove</a>
+                      </div>
+                  </div>
+  
+              </div>
+                 
+                      {% endfor %}
+
+            
+              <div class="col-md-6  view-cart">
+                  <div class="table-responsive">
+                      <table class="px-5 cartpagetable table">
+                          <tbody>
+                              <tr>
+                                  <td class=" text-start py-2">Sub-total</td>
+                                  <td class=" text-end py-2">{{total}}</td>
+                              </tr>
+                              <tr>
+                                  <td class=" text-start py-2">Tax</td>
+                                  <td class=" text-end py-2">{{tax}}</td>
+                              </tr>
+                              <tr>
+                                <td class=" text-start py-2">Grand Total</td>
+                                <td class=" text-end py-2">{{grand_total}}</td>
+                            </tr>
+                              <tr>
+                                  
+                              </tr>
+                          </tbody>
+                          
+                      </table>
+                      <div class="py-4">
+                          <a href="Payment.html">
+                              <a href=""
+                                  style="background: rgb(245, 131, 26);"
+                                  class="border-0 btn btn-primary proceed-to-buy">Proceed To Buy</a> 
+                              </a>
+                        </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  
+   
+
+
+{%endblock main-content%} 

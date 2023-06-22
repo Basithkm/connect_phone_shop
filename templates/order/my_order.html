@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Your Shopping Cart{% endblock %}
+{% block body %}
+<div class="container " style="margin-top: -70px">
+    <h1 class="text-center text-white bg-primary p-3" style="border-radius: 10px;">Your orders</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>SN</th>
+            
+            <th scope="col">Image</th>
+            <th scope="col">Product</th>
+            <th scope="col">Quantity</th>
+            <th scope="col"> Price</th>
+            <th scope="col">total Price</th>
+            <th scope="col">Satus</th>
+            <th scope="col">order Id</th>
+            <th scope="col">item Id</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in get_orders %}
+        {% with product=item.product %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+           
+            <td style="width: 10%"><a href="{{product.get_absolute_url }}"><img src="{% if product.cover_image %}{{product.cover_image.url }}{% else %}
+             {% static 'img/image-not-avilable.jpg' %} {% endif %}" width="100%"></a></td>
+            <td>{{product.product_name}}</td>
+            <td> {{item.quantity}}</td>
+            <td>Rs. {{item.price}}</td>
+            <td>Rs. {{item.get_cost}}</td>
+            <td>{{item.order.order_status}}</td>
+            <td>{{item.order.id}}</td>
+            <td>{{item.id}}</td>
+        </tr>
+        {% endwith %}
+        {% endfor %}
+        <tr>
+            {% comment %} <td style="font-weight: bold;font-size: 20px;">Total</td>
+            <td colspan="4"></td>
+            <td style="font-weight: bold;font-size: 20px;">Rs. {{cart.get_total_price}}</td> {% endcomment %}
+        </tr>
+        </tbody>
+    </table>
+    <p>
+
+        {% comment %} <a href="{% url 'orders:order_create' %}" class="btn btn-success">Checkout</a> {% endcomment %}
+         {% comment %} <a href="{% url 'index'  %}" class="btn btn-success">Continue Shopping</a>  {% endcomment %}
+        {% comment %} <a href="{% url 'orders:order_create' %}" class="btn btn-success">Checkout</a>  {% endcomment %}
+    </p>
+</div>
+
+{% endblock %}

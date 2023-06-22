@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Product List</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Product List</h1>
+    <div class="row">
+      {% if phone_product  %}
+        {% for products in phone_product %} 
+      <div class="col-md-3">
+        <div class="card">
+          <a style="text-decoration: none;" href="{% url 'filter_phone' products.id %}"><img class="card-img-top" src="{{products.phone_image.url}}" alt="Product 1"></a>
+          <div class="card-body">
+            <a style="text-decoration: none;" href="{% url 'filter_phone' products.id %}"><h5 class="card-title">{{products.phone_name}}</h5></a>
+            <p class="card-text">
+            </p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% endif %}
+
+     {% if pouch_product %}
+      {% for products in pouch_product %} 
+      <div class="col-md-3">
+        <div class="card">
+          <a style="text-decoration: none;" href="{% url 'product_inner_page' products.id %}"><img class="card-img-top" src="{{products.cover_image.url}}" alt="Product 1"></a>
+          <div class="card-body">
+            <h5 class="card-title">{{products.phone_name}}</h5>
+            <a style="text-decoration: none;" href="{% url 'product_inner_page' products.id %}"><p class="card-text">
+              product name: {{products.product_name}}<br>
+                phone name: {{products.phone_name}}<br>
+                Brand: {{products.brand_name}}<br>
+                Price: {{products.price}}<br>
+                {% comment %} Offer Price:{{products.offer_price}}<br> {% endcomment %}
+            </p></a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% endif %}
+
+      {% if search_product %}
+      {% for products in search_product %} 
+      <div class="col-md-3">
+        <div class="card">
+          <a style="text-decoration: none;" href="{% url 'product_inner_page' products.id %}"><img class="card-img-top" src="{{products.cover_image.url}}" alt="Product 1"></a>
+          <div class="card-body">
+            <h5 class="card-title">{{products.phone_name}}</h5>
+            <a style="text-decoration: none;" href="{% url 'product_inner_page' products.id %}"><p class="card-text">
+              product name: {{products.product_name}}<br>
+                phone name: {{products.phone_name}}<br>
+                Brand: {{products.brand_name}}<br>
+                Price: {{products.price}}<br>
+                Offer Price:{{products.offer_price}}<br>
+               
+            </p></a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>
