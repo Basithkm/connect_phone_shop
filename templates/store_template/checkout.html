@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{% endblock title %}about
+
+{%block main-content %}
+
+
+   
+<div class="container">
+    <div id="srchrlt" class="d-flex flex-wrap"></div>
+    </div>
+    
+      <form action="" method="post" id="theform" class="text-start">
+       {% csrf_token %}
+        <div class="   row  payment-payment">
+            <div class="text-start px-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                <h4 class="fw-bold mb-4">Shipping Address</h4>
+               
+
+                 <div class="mb-3  required form-floating"><input name="c_name" placeholder="Customer Name"
+                            type="text" id="customer_name" required class="form-control" ><label for="floatingInput">Customer
+                            Name</label></div>
+                            
+                            <div class="mb-3  required form-floating"><input name="c_email" placeholder="name@example.com"
+                            type="email" id="customer_email" required="" class="form-control"><label for="floatingInput">Email
+                            Address</label> <span style="color:red">abc@gmail.com</span>
+     <span id="emailmsg"></span><br></div>
+    
+                    <div class="mb-3  required form-floating"><input placeholder="Mobile number"
+                            type="number" name="c_mobile" required="" id="mobile"   class="form-control"><label for="floatingInput">Mobile
+                            number</label><span id="errmsg" style="color:red;">
+    </span></div>
+                    <div class="mb-3  required form-floating">
+                    <textarea class="form-control"  required="" name="Street"></textarea>
+                     <label for="floatingInput">Address(Street/ Avenue Number)</label></div>
+                     
+                          <div class="mb-3  required form-floating">
+                    <textarea class="form-control"  required="" name="state"></textarea>
+                     <label for="floatingInput">Place / Area</label></div>
+                     
+                     <div class="mb-3  required form-floating"><input name="secountry" placeholder="Country"
+                            type="text" id="customer_name" class="form-control" value="india"  required readonly><label for="floatingInput">Country</label></div>
+                           
+                            <div class="mb-3  required form-floating">
+                            <textarea class="form-control"   name="remarks"></textarea>     
+                            <label for="floatingInput"> Remarks (optional)</label></div>
+                            <button type="submit" class="border-0 bg-dark me-2 mt-2  btn btn-primary">save</button>
+                          </form>
+      
+            </div>
+            <div class="text-start px-4 col-lg-3 col-md-12 col-sm-12 col-12 mb-4">
+                <h4 class="fw-bold mb-4">Payment Method</h4>
+                <form class="text-start border border p-3" method="POST" action="{% url 'place_order' %}" >
+                  {% csrf_token %}
+                  <div class="form-check">
+                    {% for a in address %}
+                        <input class="form-check-input" type="radio" name="address" value="{{a.id}}" checked>
+                        <p>{{a.first_name}}{{a.last_name}},{{a.address_line1}}<br>,{{a.email}},<br>{{a.city}},{{a.state}},{{a.phone}}<br>{{a.country}},{{a.pincode}}
+                        </p>
+                        {% endfor %}
+                  </div>
+
+
+                  {% comment %} <button type="submit" class="border-0 bg-dark me-2 mt-2  btn btn-primary">Checkout</button>
+                          </form>
+                     {% endcomment %}
+
+                <div class="form-check">
+                  <input type="radio" name="payment" checked="" value="cod" required class="payment-radio"> 
+                  <label class="payment-text">Cash on Delivery</label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" name="payment" checked="" value="cod" required class="payment-radio"> 
+                  <label class="payment-text">Cash on Delivery</label>
+                </div>
+    
+                   <button type="submit" class="border-0 bg-dark me-2 mt-2  btn btn-primary">Checkout</button>
+                          </form> 
+                          <a href="{% url 'home' %}" style="background: rgb(245, 131, 26); border-color: rgb(245, 131, 26);"
+                          class="border-0 me-2 mt-2  btn btn-primary">Continue Shopping</a>
+
+              </div>
+              
+
+
+
+              
+            <div class="text-start px-4 col-lg-5 col-md-12 col-sm-12 col-12">
+                <h4 class="fw-bold mb-4">Order Summary</h4>
+                <p>11 Items in Cart</p>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>price</th>
+                                <th>total Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for cart_item in cart_items %}
+                            <tr>
+                                <td><img src="{{ cart_item.product.images.url }}" alt="Product"></td>
+                                <td>{{cart_item.product.product_name}}</td>
+                                <td> {{cart_item.quantity}}</td>
+                                <td>₹ {{cart_item.product.price}}</td>
+
+                                <td>₹ {{ cart_item.sub_total }}</td>    
+                            </tr>
+
+                     {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="total-price-new">
+        
+    
+    
+    <h5>Total Price::{{grand_total}} </h5>
+    {% comment %} <li>Tax <span>₹ {{tax}}</span></li> {% endcomment %}
+    
+    {% comment %} <li  >Discount <span class="text-success" >₹ {{discount_price}}</span></li> {% endcomment %}
+     
+    {% comment %} <p>Total Price: <span><b>{{grand_total}}  </span></p>  {% endcomment %}
+    
+    
+    
+    </div>
+                </div>
+              
+            </div>
+        </div>
+    </form>
+
+
+{%endblock main-content%} 

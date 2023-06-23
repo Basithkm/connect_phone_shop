@@ -3,6 +3,9 @@ from . models import *
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import JsonResponse,HttpResponse
+from . forms import *
+from orders.models import *
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -295,8 +298,9 @@ def cart(request, total=0, quantity=0, cart_items=None):
             total += (cart_item.product.price * cart_item.quantity)
             print(total)
             quantity += cart_item.quantity
-        tax = (3 * total)/100
-        grand_total = total + tax
+        # tax = (3 * total)/100
+        # grand_total = total + tax
+        grand_total = total
     except ObjectDoesNotExist:
         pass
 
@@ -304,12 +308,136 @@ def cart(request, total=0, quantity=0, cart_items=None):
         'total': total,
         'quantity': quantity,
         'cart_items': cart_items,
-        'tax': tax,
+        # 'tax': tax,
         'grand_total': grand_total,
 
     }
 
     return render(request, 'store_template/cart.html', context)
 
+
+
+
+
+@login_required(login_url='signin')
+def checkout(request, total=0, quantity=0, cart_items=None):
+    
+    try:
+        tax = 0
+        grand_total = 0
+        address = None
+        start = 0
+        discount=0
+        discount_price=0
+        data=0
+      
+            
+        if request.method == 'POST':
+        #     form = AddressForm(request.POST)    
+        #     if form.is_valid():
+        #         print("valid")
+        #         # Store all Billing information in Order Table
+            data = Address()   # getting instance
+            data.user= request.user
+            data.first_name =request.POST['c_name']
+            data.email =request.POST['c_email']
+            data.phone=request.POST['c_mobile']
+            data.address_line1 = request.POST['Street']
+            data.address_line2 =request.POST['state']
+            data.country = request.POST['secountry']
+            data.city =request.POST['remarks']
+
+ 
+        #         data.last_name = form.cleaned_data['last_name']
+        #         data.phone = form.cleaned_data['phone']
+        #         data.email = form.cleaned_data['email']
+        #         data.address_line1 = form.cleaned_data['address_line1']
+        #         data.address_line2 = form.cleaned_data['address_line2']
+        #         data.country = form.cleaned_data['country']
+        #         data.state = form.cleaned_data['state']
+        #         data.district = form.cleaned_data['district']
+        #         data.city = form.cleaned_data['city']
+        #         data.pincode = form.cleaned_data['pincode']   
+            data.save() 
+            return redirect('checkout')
+        #     else:
+        #         print("bnotvalid")
+
+        
+        cart_items = Cartitems.objects.filter(user=request.user, is_active=True)
+        address = Address.objects.filter(user=request.user)
+        coppen = Discount.objects.all()
+       
+        for cart_item in cart_items:
+            total += (cart_item.product.price * cart_item.quantity)
+            print(total)
+            quantity += cart_item.quantity
+
+        
+        if request.method=='POST':
+            checkd = Discount_coupon.objects.filter(user=request.user).exists()
+            if checkd:
+                Discount_coupon.objects.filter(user=request.user).delete()
+            
+            try:
+                coupon = request.POST['coupon']
+                # check = Discount.objects.filter(code=coupon)
+                checked = Discount.objects.get(code=coupon)
+                if checked:
+                    start =checked.discount_from
+                    discount = checked.discount_percentage
+                else:
+                        pass   
+            except:
+                # tax = (1 * total)/100
+                # grand_total = total + tax
+                grand_total = total
+            
+        else:
+            # tax = (1 * total)/100
+            # grand_total = total + tax
+            grand_total = total
+
+
+        print(start)
+        print(discount)
+                  
+        # tax = (1 * total)/100
+        # grand_total_without = total + tax 
+        grand_total_without = total 
+        print(quantity)
+        try:
+            if start:
+                if grand_total_without >= start:
+                    discount_price = int(grand_total_without * discount / 100)
+                    grand_total =int(grand_total_without - discount_price)
+                    # data = Discount_coupon()
+                    data.user = request.user
+                    data.discount_applied=discount_price
+                    data.save()
+        except:
+            grand_total = int(grand_total_without)
+     
+        
+        
+    except ObjectDoesNotExist:
+        pass
+
+
+
+    context = {
+        'total': total,
+        'quantity': quantity,
+        'cart_items': cart_items,
+        # 'tax': tax,
+        'grand_total': grand_total,
+        'discount_price':discount_price,
+        'address':address, 
+        'data':data,
+        'coppen':coppen
+    }
+
+
+    return render(request, 'store_template/checkout.html', context)
 
 

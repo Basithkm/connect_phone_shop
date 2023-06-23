@@ -68,7 +68,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'store',
-    'registration'
+    'registration',
+    'orders',
 
 ]
 
@@ -178,3 +179,5 @@ STATIC_ROOT= os.path.join(BASE_DIR,'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+RAZORPAY_ID = 'rzp_test_5vhaiawH8pMHbl'
+RAZORPAY_KEY = 'HOzFOb3ohUKq5chQhTSUGY5T'

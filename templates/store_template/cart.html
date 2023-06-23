@@ -34,7 +34,7 @@
                
                           <h5 class="mt-2" style="font-weight: bold; font-size: 18px; margin-bottom: 0.5rem;">
                             {{cart_item.product.product_name}}</h5>
-                            <h5>Quantity: {{cart_item.product.price}}</h5>
+                            <h5>Price: {{cart_item.product.price}}</h5>
                             <h5>Quantity: {{cart_item.quantity}}</h5>
                             
                  
@@ -63,8 +63,6 @@
                     
                     </div>
 
-  
-                        
                           <h5>Total Price:{{ cart_item.sub_total }}</h5>
                           <a href="{% url 'remove_items' cart_item.product.id cart_item.id %}" t class=" bg-dark border-0  btn btn-primary removecart">Remove</a>
                       </div>
@@ -83,10 +81,10 @@
                                   <td class=" text-start py-2">Sub-total</td>
                                   <td class=" text-end py-2">{{total}}</td>
                               </tr>
-                              <tr>
+                              {% comment %} <tr>
                                   <td class=" text-start py-2">Tax</td>
                                   <td class=" text-end py-2">{{tax}}</td>
-                              </tr>
+                              </tr> {% endcomment %}
                               <tr>
                                 <td class=" text-start py-2">Grand Total</td>
                                 <td class=" text-end py-2">{{grand_total}}</td>
@@ -99,7 +97,7 @@
                       </table>
                       <div class="py-4">
                           <a href="Payment.html">
-                              <a href=""
+                              <a href="{% url 'checkout' %}"
                                   style="background: rgb(245, 131, 26);"
                                   class="border-0 btn btn-primary proceed-to-buy">Proceed To Buy</a> 
                               </a>

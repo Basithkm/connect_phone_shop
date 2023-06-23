@@ -18,6 +18,9 @@ urlpatterns = [
         path('remove_items/<int:product_id>/<int:cart_item_id>/', views.remove_items,name='remove_items'),
 
 
+        path('checkout/', views.checkout,name='checkout'),
+
+
         
         
 ] + static(settings.MEDIA_URL,document_root= settings.MEDIA_ROOT)

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{% endblock title %}about
+
+{%block main-content %}
+
+{% if status %}
+
+<div class="container" style="text-align: center;"> 
+    <br> 
+    <br> 
+    <br> 
+    <br> 
+    <br> 
+    <br> 
+    <i class="fa fa-check-circle" aria-hidden="true" style="font-size: 180px; background-color:  greeen;color: rgb(30, 222, 75);"></i> 
+    <div class="mt-5"> 
+ 
+        <h1>your payment is completed successfully</h1> 
+        <br> 
+        <h2>Thankyou for purchasing with Cartbia</h2><b> Cartbia</b> 
+        <a href="{%  url 'home' %}" class="btn btn-primary" role="button">Buy Another</a> 
+    </div> 
+   
+    {% else %}
+    <div class="" style="margin-left:700px; margin-top: 300px;"> 
+        <h2>Ooops!! Payment Failed</h2> 
+        <a href="" class="btn btn-dark ml-5" role="button">Buy Another</a> 
+    </div> 
+
+ 
+ 
+{% endif %} 
+ 
+ 
+</div>
+
+
+{%endblock main-content%} 
+

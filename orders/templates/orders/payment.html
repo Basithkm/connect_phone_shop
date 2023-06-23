@@ -1,0 +1,271 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{% endblock title %}about
+
+{%block main-content %}
+
+<html lang="en">
+
+
+<body>
+
+
+
+    <div class="container d-flex justify-content-center mt-5 mb-5">
+
+
+
+        <div class="row g-3">
+
+            <div class="col-md-6">
+
+                <span>Payment Method</span>
+                
+                <div class="card">
+
+                    <div class="accordion" id="accordionExample">
+
+                        <div class="card">
+                            <div class="card-header p-0" id="headingTwo">
+                                <h2 class="mb-0">
+                                    <button
+                                        class="btn btn-light btn-block text-left collapsed p-3 rounded-0 border-bottom-custom"
+                                        type="button" data-toggle="collapse" data-target="#collapseTwo"
+                                        aria-expanded="false" aria-controls="collapseTwo">
+                                        <div class="d-flex align-items-center justify-content-between">
+
+                                            <span>Paypal</span>
+                                            <img src="https://i.imgur.com/7kQEsHU.png" width="30">
+
+                                        </div>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <input type="text" class="form-control" placeholder="Paypal email">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header p-0">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-light btn-block text-left p-3 rounded-0"
+                                        data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                        aria-controls="collapseOne">
+                                        <div class="d-flex align-items-center justify-content-between">
+
+                                            <span>Credit card</span>
+                                            <div class="icons">
+                                                <img src="https://i.imgur.com/2ISgYja.png" width="30">
+                                                <img src="https://i.imgur.com/W1vtnOV.png" width="30">
+                                                <img src="https://i.imgur.com/35tC99g.png" width="30">
+                                                <img src="https://i.imgur.com/2ISgYja.png" width="30">
+                                            </div>
+
+                                        </div>
+                                    </button>
+                                </h2>
+                            </div>
+
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                data-parent="#accordionExample">
+                                <div class="card-body payment-card-body">
+
+                                    <div class="card">
+                                        <span class="font-weight-normal card-text">Billing Address</span>
+                                        <div class="card-body">
+                                          <h5>  <p class="card-text"> <b>{{address.full_name}} </b> </p>
+                                            <p class="card-text"> {{address.address}}
+                                                {{address.city}},{{address.state}},{{address.country}},{{address.pincode}} <br> Mob {{address.phone}}
+                                            </p></h5>
+
+                                        </div>
+
+                                            <hr>
+
+                                    </div>
+                                    <!-- <span class="font-weight-normal card-text">Billing Address</span> -->
+                                    <div class="input">
+
+                                       
+                                        <h6 class="order__title">Product Review</h6>
+                                        <div class="table-responsive">
+                                            <table id="demo-foo-addrow" class="table table-bordered m-t-30 table-hover contact-list" data-paging="true" data-paging-size="7">
+                                                <thead>
+                                                    <tr>
+                                                        <!-- <th>No</th> -->
+                                                        <th>Product</th>
+                                                        <th>Quantity</th>
+                                                        <th>Amount </th>
+                                                   
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for cart_item in cart_items %}
+                                                    <tr>
+                                                        <!-- <td>{{product.id}}</td> -->
+                                                      
+                                                        <td>{{cart_item.product.product_name}}</td>
+                                                        <td> {{cart_item.quantity}}</td>
+                
+                                                        <td>₹ {{ cart_item.sub_total }}</td>
+                                                        
+                                                        
+                                                       
+                                        
+                                                    </tr>
+                                                                          
+                                                   {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                       
+
+
+
+                                    </div>
+
+                                  
+
+                                    <span class="text-muted certificate-text"><i class="fa fa-lock"></i> 
+                                         Love Fashion Love  Cartbia </span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+                <span>Summary</span>
+
+                <div class="card">
+
+                    <div class="d-flex justify-content-between p-3">
+
+                        <div class="d-flex flex-column">
+
+                            <span>Total <i class="fa fa-caret-down"></i></span>
+                            <!-- <a href="#" class="billing">Save 20% with annual billing</a> -->
+
+                        </div>
+
+                        <div class="mt-1">
+                            <!-- <span>Refferal Bonouses</span> -->
+                            <span>{{total}}</span>
+                            
+                        </div>
+
+                    </div>
+
+                    <hr class="mt-0 line">
+
+                    <div class="p-3">
+
+                       
+
+                        <div class="d-flex justify-content-between">
+
+                            <span>Tax <i class="fa fa-clock-o"></i></span>
+                            <span>₹ {{tax}}</span>
+
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+
+                            <span>Discount</span>
+                            <span class="text-success">₹ {{discount}}</span>
+
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-2">
+
+                            <span>Grand Total</span>
+                            <span>₹ {{grand_total}}</span>
+
+                        </div>
+
+
+                    </div>
+
+                    <hr class="mt-0 line">
+
+
+                    <div class="p-3 d-flex justify-content-between">
+
+                        <div class="d-flex flex-column">
+
+                            <!-- <span>Today you pay(US Dollars)</span> -->
+                            <!-- <small>After 30 days $9.59</small> -->
+
+                        </div>
+                        <!-- <span>$0</span> -->
+
+
+
+                    </div>
+
+
+                    <div class="p-3">
+
+                        <a href="{% url 'payment' %}"><button class="btn btn-dark btn-block ">Continue </button></a>
+                        <div class="text-center">
+                            <!-- <a href="#">Have a promo code?</a> -->
+                        </div>
+
+                    </div>
+                    <div>
+                        <!-- <div>
+                            {% if payment%}
+                            <form action="{% url 'payment-status' %}" method="POST">
+                              {% csrf_token %}
+                              <script src="https://checkout.razorpay.com/v1/checkout.js"
+                               data-key="rzp_test_jiqUdEu9mZHhRH"
+                                data-amount="{{payment.amount}}"
+                                data-currency="{{payment.currency }}"
+                                 data-order_id="{{payment.id}}"
+                                data-buttontext="Pay "
+                                data-name="Cartbia" 
+                                data-description="Get in Love  Fashion Love with Cartbia"
+                                data-image="https://example.com/your_logo.jpg"
+                                 data-prefill.name="{{payment.name}}"
+                                data-prefill.email="cartbia369@gmail.com"
+                                 data-theme.color="#F37254"></script>
+                              <input type="hidden" custom="Hidden Element" name="hidden">
+                            </form>
+                        
+                            {% endif %}
+                          </div> -->
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
+
+
+        body {
+            background-color: #f5eee7;
+            font-family: "Poppins", sans-serif;
+            font-weight: 300;
+        }
+
+      
+    </style>
+
+
+    {%endblock main-content%} 

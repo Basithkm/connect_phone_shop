@@ -61,7 +61,6 @@ class Sub_Category(models.Model):
 
 
 
-
 class Product(models.Model):
     product_name    = models.CharField(max_length=100,unique=True)
     slug            = models.SlugField(max_length=100,unique=True)

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{% endblock title %}about
+
+{%block main-content %}
+
+
+  
+  
+
+
+<body >
+
+  <div class=" d-flex  justify-content-center" >
+  <div>
+    <h6>Click Pay button  For  make payments</h6>
+  <div class="card  d-flex align-items-center bg-secondary" style="width: 18rem;">
+    
+    <div class="card-body">
+      <div>
+      </div>
+        
+        {% if payment%}
+        <form action="{% url 'payment-status' %}" method="POST">
+          {% csrf_token %}
+          <script src="https://checkout.razorpay.com/v1/checkout.js"
+          data-key="rzp_test_5vhaiawH8pMHbl"
+            data-amount="{{payment.amount}}"
+            data-currency="{{payment.currency }}"
+             data-order_id="{{payment.id}}"
+            data-buttontext="Pay "
+            data-name="Cartbia" 
+            data-description="Get in Love  Fashion Love with Cartbia"
+            data-image="https://example.com/your_logo.jpg"
+             data-prefill.name="{{payment.name}}"
+            data-prefill.email="cartbia369@gmail.com"
+             data-theme.color="#F37254"></script>
+          <input type="hidden" custom="Hidden Element" name="hidden">
+        </form>
+    
+        {% endif %}
+  
+    </div>
+  </div>
+
+ 
+  </div>
+</div>
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+</body>
+
+
+{%endblock main-content%} 
