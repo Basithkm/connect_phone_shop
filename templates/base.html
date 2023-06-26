@@ -58,19 +58,21 @@
             </div>
         </div>
         </div>
+
+
         <div class="col-md-8 header">
 
             <div class='search'>
                 {% comment %} <form method="get" action="{% url 'search' %}"> {% endcomment %}
-                    <form method="get ">
+                    {% comment %} <form method="get "> {% endcomment %}
                 <div class="searchBar">
-                
-                    <input id="search-input" name="query" type="text" placeholder="Search Products,Brands and More" />
+                  <input type="text" id="searchInput" placeholder="Search products or categories">
+                    {% comment %} <input id="search-input" name="query" type="text" placeholder="Search Products,Brands and More" /> {% endcomment %}
                     <div className='d-flex'>
 
-                        <button id="searchQuerySubmit" type="submit" name="search-input">
+                        {% comment %} <button id="searchQuerySubmit" type="submit" name="search-input">
                             <i class="fas fa-search"></i>
-                        </button>
+                        </button> {% endcomment %}
                     </div>
                 </div>
             </form>
@@ -237,7 +239,6 @@
   </section>
   </div>
   
-
   
     
     <section>
@@ -257,7 +258,7 @@
     </section>
   
 
-
+    
 {%block main-content %} {%endblock main-content%}  
 
 
@@ -359,6 +360,9 @@
 <script type="text/javascript" src="{% static 'js/owl.carousel.min.js' %}"></script>  
 
 
+{% comment %} <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> {% endcomment %}
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -380,6 +384,44 @@
     </script>
 
  {% endcomment %}
+
+
+
+ <script>
+
+  // products.js
+  $(document).ready(function() {
+      // Set up autocomplete on the search input field
+      $("#searchInput").autocomplete({
+          source: "/search/",
+          minLength: 1,
+          select: function(event, ui) {
+              window.location.href = ui.item.url;
+          }
+      });
+  
+      // Display search results on keyup event
+      $("#searchInput").on('keyup', function() {
+          var query = $(this).val().trim();
+          if (query.length >= 1) {
+              $.ajax({
+                  url: "/search/",
+                  data: { q: query },
+                  success: function(data) {
+                      $("#searchResults").html(data);
+                  }
+              });
+          } else {
+              $("#searchResults").html("");
+          }
+      });
+  });
+  
+  </script>
+
+
+
+
 
   <script>
     $(document).ready(function () {

@@ -25,7 +25,8 @@ def placeOrder(request,total=0, quantity=0):
     cart_items = Cartitems.objects.filter(user=current_user)
     cart_count = cart_items.count()
     if cart_count <= 0:
-        return redirect('shop')
+        messages.success(request, 'please order')
+        return redirect('home')
     
     for cart_item in cart_items:
         total += (cart_item.product.price * cart_item.quantity)

@@ -6,7 +6,7 @@
 
 
           <div class="top-icons">
-              
+            
             <div class="top-cart-icons">
             <a class="cart-btn" href="">
               <img src="{% static 'images/itcity/shopping-cart.png' %}" alt="">
@@ -36,6 +36,7 @@
   
 <!--Mobileresponsive-->
 
+{% include 'includes/alerts.html' %}
 
 
 <div class="content">
@@ -178,6 +179,8 @@
     </div>
 
     <div class='content'>
+
+      <div id="searchResults"></div>
  
       {% for products in products %} 
       <div class='newdesign'>

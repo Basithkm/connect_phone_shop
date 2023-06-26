@@ -5,6 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import JsonResponse,HttpResponse
 from . forms import *
 from orders.models import *
+from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -20,6 +21,17 @@ def homei(request):
         'category':category
     }
     return render(request, 'store_template/index.html', context)
+
+
+def search_products(request):
+    query = request.GET.get('q', '')
+    products = Product.objects.filter(Q(product_name__icontains=query)
+                                      )|Product.objects.filter(Q(phone_name__sub_categoryname__icontains=query)
+                                                               )|Product.objects.filter(Q(brand__category_name__icontains=query))
+    return render(request, 'store_template/search_results.html', {'products': products})
+
+
+
 
 
 def filter_brand(request,id):
